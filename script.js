@@ -49,6 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // 상단 비주얼 그라데이션
     heroEl.className = "h-40 sm:h-48 bg-gradient-to-r " + ad.bgClass;
 
+    // CTA 누르면 next.html로 이동
+    ctaEl.onclick = () => {
+      window.location.href = "next.html"; // 파일 이름 다르면 여기만 수정
+    };
+
     popup.classList.remove("hidden");
     popup.classList.add("flex");
   }
