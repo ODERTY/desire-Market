@@ -1,91 +1,57 @@
-// 광고 버전 3개 (원하면 더 추가 가능)
-const ADS = [
-  {
-    badge: "AD · 시대별 건강템 아카이브",
-    title: "1920~2020년, 100년 건강템 광고 한 번에 보기",
-    body:
-      "뱀기름·게르마늄 팔찌·디톡스 주스·수소수까지. 각 시대가 사랑했던 유사과학 건강템을 한 페이지에서 비교해 보세요.",
-    cta: "아카이브 입장하기",
-    bgClass: "from-amber-400 via-orange-400 to-rose-500"
-  },
-  {
-    badge: "AD · 내 장바구니 리포트",
-    title: "방금까지 고른 상품으로 욕망 리포트 만들기",
-    body:
-      "당신이 자꾸 클릭했던 문구들을 모아 하나의 리포트로 정리해 줍니다. “즉시·완벽·기적”에 얼마나 반응했는지 확인해 보세요.",
-    cta: "리포트 받아보기",
-    bgClass: "from-sky-400 via-indigo-400 to-purple-500"
-  },
-  {
-    badge: "AD · 실험실 체험관",
-    title: "숫자와 실험복 뒤에 숨은 광고 언어 체험",
-    body:
-      "ppm, %, n=30, 더블 블라인드… 숫자와 그래프로 포장된 광고를 인터랙티브 실험실에서 직접 분해해 봅니다.",
-    cta: "체험하러 가기",
-    bgClass: "from-emerald-400 via-teal-400 to-cyan-500"
-  }
+// --- 설정 값 ---
+const ONBOARDING_MESSAGES = [
+    "시스템 접속...",
+    "사용자 확인 완료.",
+    "특별 할인 쿠폰 7장이 발급되었습니다.",
+    "주의하세요.",
+    "60초 안에 사용하지 않으면 소멸됩니다."
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
-  const popup = document.getElementById("popup-ad");
-  const closeBtn = document.getElementById("popup-close");
-  const heroEl = document.getElementById("popup-hero");
-  const badgeEl = document.getElementById("popup-badge");
-  const titleEl = document.getElementById("popup-title");
-  const bodyEl = document.getElementById("popup-body");
-  const ctaEl = document.getElementById("popup-cta");
+// --- 요소 가져오기 ---
+const elTypingText = document.getElementById('typing-text');
+const elBtnStart = document.getElementById('btn-start');
+const elPageOnboarding = document.getElementById('page-onboarding');
+const elPageShopping = document.getElementById('page-shopping');
 
-  function openPopup() {
-    if (!popup) return;
+// --- 기능 1: 타이핑 효과 ---
+async function typeWriter(text) {
+    elTypingText.textContent = ""; // 초기화
+    
+    for (let i = 0; i < text.length; i++) {
+        elTypingText.textContent += text[i];
+        // 글자마다 랜덤한 딜레이를 주어 기계적인 느낌 연출
+        const delay = Math.random() * 50 + 50; 
+        await new Promise(resolve => setTimeout(resolve, delay));
+    }
+    
+    // 문장 끝난 후 대기
+    await new Promise(resolve => setTimeout(resolve, 1000));
+}
 
-    // 랜덤 광고 하나 선택
-    const ad = ADS[Math.floor(Math.random() * ADS.length)];
+// --- 기능 2: 온보딩 시퀀스 실행 ---
+async function runOnboarding() {
+    for (const msg of ONBOARDING_MESSAGES) {
+        await typeWriter(msg);
+    }
+    
+    // 모든 텍스트 종료 후
+    elTypingText.classList.add('cursor-hide'); // 커서 제거
+    elBtnStart.classList.remove('hidden');     // 버튼 보이기
+    elBtnStart.classList.add('fade-in');       // 등장 애니메이션
+}
 
-    badgeEl.textContent = ad.badge;
-    titleEl.textContent = ad.title;
-    bodyEl.textContent = ad.body;
-    ctaEl.textContent = ad.cta;
-
-    // 상단 비주얼 그라데이션
-    heroEl.className = "h-40 sm:h-48 bg-gradient-to-r " + ad.bgClass;
-
-    // CTA 누르면 next.html로 이동
-    ctaEl.onclick = () => {
-      window.location.href = "next.html"; // 파일 이름 다르면 여기만 수정
-    };
-
-    popup.classList.remove("hidden");
-    popup.classList.add("flex");
-  }
-
-  function closePopup() {
-    if (!popup) return;
-    popup.classList.add("hidden");
-    popup.classList.remove("flex");
-  }
-
-  // js-ad-trigger 클래스가 붙은 모든 요소 → 팝업 트리거
-  document.querySelectorAll(".js-ad-trigger").forEach((el) => {
-    el.addEventListener("click", (e) => {
-      // a 태그면 기본 이동 막기
-      if (el.tagName === "A") {
-        e.preventDefault();
-      }
-      openPopup();
-    });
-  });
-
-  // 닫기 버튼
-  if (closeBtn) {
-    closeBtn.addEventListener("click", closePopup);
-  }
-
-  // 어두운 배경 클릭 시 닫기
-  if (popup) {
-    popup.addEventListener("click", (e) => {
-      if (e.target === popup) {
-        closePopup();
-      }
-    });
-  }
+// --- 기능 3: 쇼핑 시작 버튼 클릭 ---
+elBtnStart.addEventListener('click', () => {
+    // 1. 온보딩 페이지 숨김
+    elPageOnboarding.classList.add('hidden');
+    
+    // 2. 쇼핑 페이지 보임
+    elPageShopping.classList.remove('hidden');
+    
+    // (여기서 나중에 쇼핑 초기화 함수를 호출할 예정)
+    console.log("쇼핑 페이지로 이동합니다.");
 });
+
+// --- 실행 ---
+// 페이지 로드 시 바로 시작
+runOnboarding();

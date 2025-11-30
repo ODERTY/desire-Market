@@ -1,0 +1,29 @@
+/* 커서 깜빡임 효과 */
+@keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #4ade80; /* green-400 */ }
+}
+
+/* 타이핑 텍스트 옆에 커서 붙이기 */
+#typing-text {
+    border-right: 3px solid #4ade80;
+    padding-right: 5px;
+    animation: blink 0.75s step-end infinite;
+    white-space: pre-line; /* 줄바꿈 허용 */
+}
+
+/* 텍스트가 다 쳐지면 커서 제거할 때 쓰는 클래스 */
+.cursor-hide {
+    border-right: none !important;
+    animation: none !important;
+}
+
+/* 버튼 등장 애니메이션 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
