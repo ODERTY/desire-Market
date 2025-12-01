@@ -1,7 +1,6 @@
 /* =========================================
    0. 폰트 정의 (Font Face)
 ========================================= */
-/* ... 기존 폰트 정의 유지 ... */
 @font-face { font-family: 'GMarketSans'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff'); font-weight: 300; font-display: swap; }
 @font-face { font-family: 'GMarketSans'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff'); font-weight: 500; font-display: swap; }
 @font-face { font-family: 'GMarketSans'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff'); font-weight: 700; font-display: swap; }
@@ -37,62 +36,91 @@ body.main-page {
 }
 
 /* =========================================
-   2. 상단 배너 (애니메이션 수정됨)
+   2. 상단 배너 (위치 수정 완료)
 ========================================= */
 .top-banner { background: linear-gradient(90deg, #960000 0%, #de3b00 100%); height: 85px; flex-shrink: 0; }
-.top-banner-inner { position: relative; height: 100%; }
+.top-banner-inner { position: relative; height: 100%; width: 100%; }
 
+/* 로고: 왼쪽에서 12% 지점 */
 .top-banner-logo {
-  position: absolute; left: 310px; top: 50%; transform: translateY(-50%);
-  font-family: 'Galmuri11', sans-serif; font-size: 45px; font-weight: 700;
+  position: absolute; 
+  left: 12%; 
+  top: 50%; 
+  transform: translateY(-50%);
+  font-family: 'Galmuri11', sans-serif; 
+  font-size: 45px; 
+  font-weight: 700;
+  white-space: nowrap;
 }
 
+/* 메뉴: 화면 정중앙 고정 */
 .top-banner-nav {
-  position: absolute; left: 732px; top: 50%; transform: translateY(-50%);
-  display: flex; gap: 40px;
+  position: absolute; 
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  display: flex; 
+  gap: 40px;
 }
 
-/* 상단 메뉴 링크 스타일 */
+/* About: 오른쪽에서 12% 지점 */
+.top-banner-about { 
+  position: absolute; 
+  right: -88%; 
+  top: 38%; 
+  transform: translate(-50%, -50%);
+}
+
+/* 링크 스타일 */
 .top-banner-nav a, 
 .top-banner-about {
   font-family: 'GMarketSans', sans-serif; 
   font-weight: 500; 
   font-size: 20px;
   color: #ffffff; 
-  text-decoration: none; /* 밑줄 제거 */
+  text-decoration: none; 
   white-space: nowrap;
-  position: relative; /* 애니메이션 기준점 */
+  position: relative;
 }
 
-.top-banner-about { 
-  position: absolute; right: 312px; top: 50%; transform: translateY(-50%); 
-}
-
-/* [애니메이션] 상단 배너 Hover 효과: 아래에서 위로 */
+/* 상단 배너 Hover 효과: 아래에서 위로 */
 .top-banner-nav a::after,
 .top-banner-about::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -27px; /* 텍스트 높이 고려하여 배너 하단(85px) 끝에 맞춤 */
+    bottom: -27px;
     width: 100%;
     height: 5px;
     background-color: #FFFFFF;
-    
-    /* 애니메이션 초기 상태 */
     opacity: 0;
-    transform: translateY(-10px); /* 살짝 아래에서 시작 */
+    transform: translateY(-10px);
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .top-banner-nav a:hover::after,
 .top-banner-about:hover::after {
     opacity: 1;
-    transform: translateY(0); /* 제자리로 올라옴 */
+    transform: translateY(0);
+}
+
+/* 좁은 화면 대응 */
+@media (max-width: 1400px) {
+    /* 화면이 좁아지면 12% 여백이 너무 넓을 수 있으므로 줄임 */
+    .top-banner-logo { left: 5%; font-size: 32px; }
+    .top-banner-about { right: 5%; font-size: 16px; }
+    .top-banner-nav { gap: 20px; }
+    .top-banner-nav a { font-size: 16px; }
+}
+
+@media (max-width: 768px) {
+    .top-banner-nav { display: none; } 
+    .top-banner-logo { left: 50%; transform: translate(-50%, -50%); }
+    .top-banner-about { display: none; }
 }
 
 /* =========================================
-   3. 네온바 (공통)
+   3. 네온바
 ========================================= */
 .neon-bar { background-color: #100202; height: 50px; overflow: hidden; flex-shrink: 0; }
 .neon-marquee { position: relative; width: 100%; height: 100%; display: flex; align-items: center; overflow: hidden; }
@@ -114,7 +142,7 @@ body.main-page {
 .main-hero-inner { flex: 1; width: 100%; position: relative; }
 
 /* =========================================
-   5. 푸터 (애니메이션 수정됨)
+   5. 푸터 (단순 밑줄)
 ========================================= */
 .site-footer { background-color: #960000; height: 57px; flex-shrink: 0; }
 .footer-inner {
@@ -124,40 +152,19 @@ body.main-page {
     height: 57px;
     display: flex;
     align-items: center;
-    padding: 0 400px; 
-    box-sizing: border-box;
-    gap: 100px;
-    justify-content: center;
+    justify-content: center; /* 중앙 정렬 */
+    gap: 100px; /* 간격 유지 */
 }
 
-/* 푸터 메뉴 링크 스타일 */
 .footer-inner a {
   font-family: 'GMarketSans', sans-serif; font-weight: 500; font-size: 14px;
   color: #ffffff; 
-  text-decoration: none; /* 밑줄 제거 */
+  text-decoration: none; 
   white-space: nowrap;
-  position: relative; /* 애니메이션 기준점 */
 }
 
-/* [애니메이션] 푸터 Hover 효과: 위에서 아래로 */
-.footer-inner a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: -18px; /* 텍스트 높이 고려하여 푸터 상단 끝에 맞춤 */
-    width: 100%;
-    height: 5px;
-    background-color: #FFFFFF;
-
-    /* 애니메이션 초기 상태 */
-    opacity: 0;
-    transform: translateY(10px); /* 살짝 위에서 시작 */
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.footer-inner a:hover::after {
-    opacity: 1;
-    transform: translateY(0); /* 제자리로 내려옴 */
+.footer-inner a:hover {
+    text-decoration: underline;
 }
 
 /* =========================================
@@ -169,7 +176,6 @@ body.main-page {
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .fade-in { animation: fadeIn 1s ease-out forwards; }
 
-
 /* =========================================
    [NEW] 온보딩 배경 이미지 설정
 ========================================= */
@@ -177,5 +183,5 @@ body.main-page {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url('온보딩 배경.png'); /* 이미지를 여기에 넣으세요 */
+    background-image: url('온보딩 배경.png');
 }
