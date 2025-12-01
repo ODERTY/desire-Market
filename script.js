@@ -32,6 +32,10 @@ elBtnLoginConfirm.addEventListener('click', () => {
 
     elLoginFrame.classList.add('hidden');
     elPageOnboardingText.classList.remove('hidden');
+    
+    // 시작 시 버튼은 무조건 숨김 상태 보장
+    elBtnStartShopping.classList.add('hidden');
+    
     runOnboardingTextSequence();
 });
 
@@ -48,7 +52,7 @@ async function animateMessage(text, isLast = false) {
     elOnboardingMessage.classList.add('slide-in');
     
     // 읽는 시간
-    await wait(2500); 
+    await wait(1200); 
     
     // 퇴장 (마지막 메시지는 퇴장 안 함)
     if (!isLast) {
@@ -82,6 +86,7 @@ elBtnStartShopping.addEventListener('click', () => {
     elPageOnboardingText.classList.add('hidden');
     elOnboardingBg.classList.add('hidden'); 
     elPageShopping.classList.remove('hidden');
+    elPageShopping.style.display = 'flex'; // Flex 레이아웃 강제 적용
     console.log("쇼핑 시작!");
 });
 

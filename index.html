@@ -65,31 +65,90 @@
                     </button>
                 </div>
 
-                <!-- [STEP 2] 텍스트 온보딩 (구조 수정됨) -->
+                <!-- [STEP 2] 텍스트 온보딩 -->
                 <section id="page-onboarding-text" class="hidden w-full h-full relative">
-                    <!-- 배경 박스 (메시지와 버튼을 감싸는 컨테이너) -->
+                    <!-- 배경 박스 -->
                     <div class="onboarding-box">
                         <!-- 메시지 텍스트 -->
                         <div id="onboarding-message" class="onboarding-text">
                             <!-- JS로 텍스트 입력됨 -->
                         </div>
-                        
-                        <!-- 시작 버튼 (박스 내부로 이동, 스타일 CSS로 제어) -->
+                        <!-- 구매 시작하기 버튼 -->
                         <button id="btn-start-shopping" class="hidden">
                             구매 시작하기
                         </button>
                     </div>
                 </section>
 
-                <!-- [PAGE 2,3,4] ... (기존 유지) -->
-                <section id="page-shopping" class="hidden w-full h-full text-white bg-black/80 backdrop-blur-sm">
-                    <div class="flex items-center justify-center h-full text-gray-400">쇼핑 페이지 준비 중...</div>
-                </section>
-                <section id="page-cart" class="hidden w-full h-full text-white bg-black">
-                    <div class="flex items-center justify-center h-full text-gray-400">장바구니 페이지 준비 중...</div>
-                </section>
-                <section id="page-report" class="hidden w-full h-full text-white bg-black">
-                    <div class="flex items-center justify-center h-full text-gray-400">결산 페이지 준비 중...</div>
+                <!-- [PAGE 2] 쇼핑 (메인 카드 레이아웃 적용) -->
+                <section id="page-shopping" class="hidden w-full h-full text-white relative">
+                    <!-- 메인 카드 -->
+                    <div class="product-card-container">
+                        
+                        <!-- 1. 좌측 상품 이미지 -->
+                        <div class="product-image-box" style="background-image: url('펩타이드.png');"></div>
+
+                        <!-- 2. 우측 상단 소형 배너 -->
+                        <div class="product-small-banner" style="background-image: url('타임특가.png');"></div>
+
+                        <!-- 3. 우측 상품 정보 (좌측 정렬 Flow) -->
+                        <div class="product-detail-container">
+                            <!-- 상품 이름 -->
+                            <div class="product-name">타임락 저분자 펩타이드</div>
+                            
+                            <!-- 가로선 1 -->
+                            <div class="divider-line"></div>
+                            
+                            <!-- 상세설명 제목 -->
+                            <div class="desc-title">바르는 보톡스? 아니, 시간을 멈추는 과학.</div>
+                            
+                            <!-- 상세설명 본문 -->
+                            <div class="desc-body">
+                                일반 콜라겐의 1/1000에 불과한 나노 단위 펩타이드가 피부 장벽을 통과, 코어 세포까지 다이렉트로 침투합니다. 피부 속부터 차오르는 영양이 무너진 피부 구조를 재건하고 잊고 있던 탄력과 광채를 되찾아줍니다. 더 이상 겉만 맴도는 보습에 만족하지 마세요.
+                            </div>
+                            
+                            <!-- 가로선 2 -->
+                            <div class="divider-line"></div>
+
+                            <!-- 가격 정보 -->
+                            <div class="price-container">
+                                <span class="price-sale">3,010원</span>
+                                <span class="price-original">이전가격 <span class="price-strike">43000원</span></span>
+                            </div>
+
+                            <!-- 구매 버튼 -->
+                            <button class="btn-buy-product">
+                                바로 추가하기! 품절 임박!
+                            </button>
+
+                            <!-- 가로선 3 -->
+                            <div class="divider-line"></div>
+
+                            <!-- [NEW] 리뷰 섹션 -->
+                            <div class="review-section">
+                                <!-- 리뷰 통계 -->
+                                <div class="review-stats">
+                                    <span>리뷰 5,623건</span>
+                                    <div class="review-divider-vertical"></div>
+                                    <div class="review-star-icon"></div>
+                                    <span>4.9</span>
+                                </div>
+
+                                <!-- 리뷰어 정보 -->
+                                <div class="reviewer-info">
+                                    <span class="reviewer-name">임*석</span>
+                                    <span class="reviewer-date">2023년 11월 10일</span>
+                                </div>
+
+                                <!-- 리뷰 내용 -->
+                                <div class="review-content">
+                                    앰플 미쳤습니다. 쓰고 한달만에 주름이 없어졌어요 번창하십쇼.
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </section>
 
             </div>
