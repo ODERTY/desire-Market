@@ -6,7 +6,7 @@ const elLoginFrame = document.getElementById('login-frame');
 const elUsernameInput = document.getElementById('username-input');
 const elBtnLoginConfirm = document.getElementById('btn-login-confirm');
 const elPageOnboardingText = document.getElementById('page-onboarding-text');
-const elTypingText = document.getElementById('typing-text'); // 메시지가 표시될 h1
+const elOnboardingMessage = document.getElementById('onboarding-message');
 const elBtnStartShopping = document.getElementById('btn-start-shopping');
 const elPageShopping = document.getElementById('page-shopping');
 const elOnboardingBg = document.getElementById('onboarding-bg');
@@ -32,33 +32,30 @@ elBtnLoginConfirm.addEventListener('click', () => {
 
     elLoginFrame.classList.add('hidden');
     elPageOnboardingText.classList.remove('hidden');
-    
-    // 텍스트 온보딩 시퀀스 시작
     runOnboardingTextSequence();
 });
 
-// --- 기능 3: 텍스트 슬라이드 애니메이션 (수정됨) ---
+// --- 기능 3: 텍스트 슬라이드 애니메이션 ---
 function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function animateMessage(text) {
-    // 1. 텍스트 설정 및 초기화
-    elTypingText.textContent = text;
-    elTypingText.classList.remove('slide-out', 'hidden');
+async function animateMessage(text, isLast = false) {
+    elOnboardingMessage.textContent = text;
+    elOnboardingMessage.classList.remove('slide-out', 'hidden');
     
-    // 2. 등장 (오른쪽 -> 중앙)
-    elTypingText.classList.add('slide-in');
+    // 등장
+    elOnboardingMessage.classList.add('slide-in');
     
-    // 3. 읽는 시간 대기 (등장 애니메이션 시간 + 대기 시간)
+    // 읽는 시간
     await wait(2500); 
     
-    // 4. 퇴장 (중앙 -> 왼쪽)
-    elTypingText.classList.remove('slide-in');
-    elTypingText.classList.add('slide-out');
-    
-    // 5. 퇴장 애니메이션 완료 대기
-    await wait(600); 
+    // 퇴장 (마지막 메시지는 퇴장 안 함)
+    if (!isLast) {
+        elOnboardingMessage.classList.remove('slide-in');
+        elOnboardingMessage.classList.add('slide-out');
+        await wait(600); 
+    }
 }
 
 async function runOnboardingTextSequence() {
@@ -70,15 +67,12 @@ async function runOnboardingTextSequence() {
         "60초 안에 사용하지 않으면 소멸됩니다."
     ];
 
-    // 순차적으로 메시지 애니메이션 실행
-    for (const msg of messages) {
-        await animateMessage(msg);
+    for (let i = 0; i < messages.length; i++) {
+        const isLast = (i === messages.length - 1);
+        await animateMessage(messages[i], isLast);
     }
     
-    // 모든 메시지 종료 후 버튼 등장
-    // 마지막 메시지가 slide-out 된 상태이므로 텍스트 숨김 처리
-    elTypingText.classList.add('hidden'); 
-    
+    // 마지막 메시지가 떠 있는 상태에서 버튼 등장
     elBtnStartShopping.classList.remove('hidden');
     elBtnStartShopping.classList.add('fade-in');
 }
@@ -91,7 +85,7 @@ elBtnStartShopping.addEventListener('click', () => {
     console.log("쇼핑 시작!");
 });
 
-// --- 기능 5: 네온 마퀴 (자동 실행) ---
+// --- 기능 5: 네온 마퀴 ---
 function setupNeonMarquee() {
   const tracks = document.querySelectorAll(".js-neon-track");
   

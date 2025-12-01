@@ -36,83 +36,46 @@ body.main-page {
 }
 
 /* =========================================
-   2. 상단 배너 (사용자 수정값 유지)
+   2. 상단 배너
 ========================================= */
 .top-banner { background: linear-gradient(90deg, #960000 0%, #de3b00 100%); height: 85px; flex-shrink: 0; }
 .top-banner-inner { position: relative; height: 100%; width: 100%; }
 
-/* 로고: 왼쪽에서 12% 지점 */
 .top-banner-logo {
-  position: absolute; 
-  left: 12%; 
-  top: 50%; 
-  transform: translateY(-50%);
-  font-family: 'Galmuri11', sans-serif; 
-  font-size: 45px; 
-  font-weight: 700;
-  white-space: nowrap;
+  position: absolute; left: 12%; top: 50%; transform: translateY(-50%);
+  font-family: 'Galmuri11', sans-serif; font-size: 45px; font-weight: 700; white-space: nowrap;
 }
 
-/* 메뉴: 화면 정중앙 고정 */
 .top-banner-nav {
-  position: absolute; 
-  left: 50%; 
-  top: 50%; 
-  transform: translate(-50%, -50%); 
-  display: flex; 
-  gap: 40px;
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: flex; gap: 40px;
 }
 
-/* About: 사용자 지정 위치 (-88%, 38%) 유지 */
 .top-banner-about { 
-  position: absolute; 
-  margin-left: 40px;
-  right: -88%; 
-  top: 38%; 
-  transform: translate(-50%, -50%);
+  position: absolute; right: -80%; top: 38%; transform: translate(-50%, -50%);
 }
 
-/* 링크 스타일 */
-.top-banner-nav a, 
-.top-banner-about {
-  font-family: 'GMarketSans', sans-serif; 
-  font-weight: 500; 
-  font-size: 20px;
-  color: #ffffff; 
-  text-decoration: none; 
-  white-space: nowrap;
-  position: relative;
+.top-banner-nav a, .top-banner-about {
+  font-family: 'GMarketSans', sans-serif; font-weight: 500; font-size: 20px;
+  color: #ffffff; text-decoration: none; white-space: nowrap; position: relative;
 }
 
-/* 상단 배너 Hover 효과: 아래에서 위로 */
-.top-banner-nav a::after,
-.top-banner-about::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -27px;
-    width: 100%;
-    height: 5px;
-    background-color: #FFFFFF;
-    opacity: 0;
-    transform: translateY(-10px);
+/* 상단 배너 Hover 효과 */
+.top-banner-nav a::after, .top-banner-about::after {
+    content: ""; position: absolute; left: 0; bottom: -27px; width: 100%; height: 5px;
+    background-color: #FFFFFF; opacity: 0; transform: translateY(-10px);
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-
-.top-banner-nav a:hover::after,
-.top-banner-about:hover::after {
-    opacity: 1;
-    transform: translateY(0);
+.top-banner-nav a:hover::after, .top-banner-about:hover::after {
+    opacity: 1; transform: translateY(0);
 }
 
 /* 좁은 화면 대응 */
 @media (max-width: 1400px) {
     .top-banner-logo { left: 5%; font-size: 32px; }
-    /* About 위치는 사용자가 지정한 특수 값이므로 미디어쿼리에서도 주의 필요. 필요시 조정 */
     .top-banner-nav { gap: 20px; }
     .top-banner-nav a { font-size: 16px; }
 }
-
 @media (max-width: 768px) {
     .top-banner-nav { display: none; } 
     .top-banner-logo { left: 50%; transform: translate(-50%, -50%); }
@@ -146,68 +109,83 @@ body.main-page {
 ========================================= */
 .site-footer { background-color: #960000; height: 57px; flex-shrink: 0; }
 .footer-inner {
-    width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-    height: 57px;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* 중앙 정렬 */
-    gap: 100px; /* 간격 유지 */
+    width: 100%; max-width: 1920px; margin: 0 auto; height: 57px;
+    display: flex; align-items: center; justify-content: center; gap: 100px;
 }
-
 .footer-inner a {
   font-family: 'GMarketSans', sans-serif; font-weight: 500; font-size: 14px;
-  color: #ffffff; 
-  text-decoration: none; 
-  white-space: nowrap;
+  color: #ffffff; text-decoration: none; white-space: nowrap;
 }
-
 .footer-inner a:hover {
     text-decoration: underline;
+    text-underline-offset: 8px;
 }
 
 /* =========================================
-   6. 유틸 & 애니메이션 (수정됨)
+   6. 애니메이션 & 온보딩 스타일 (수정됨)
 ========================================= */
-/* 페이드인 + 오른쪽에서 슬라이드 진입 */
+.onboarding-box {
+    width: 100%;
+    height: 258px;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column; /* 세로 배치 */
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* 버튼과의 간격 확보를 위한 갭 (필요시 조정 가능) */
+    gap: 30px; 
+}
+
+.onboarding-text {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    color: #FFFB7E;
+    text-shadow: 0 0 4px rgba(231, 255, 126, 1);
+    text-align: center;
+    white-space: pre-line;
+    opacity: 0;
+}
+
+/* 시작 버튼 스타일 */
+#btn-start-shopping {
+    background-color: #2D2D2D; /* 기본 색상 */
+    color: white;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 12px 32px;
+    border-radius: 8px;
+    /* 요청하신 그림자: y방향 7px, 블러 10px, 색상 #000000 65% */
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.65);
+    transition: background-color 0.3s ease, transform 0.2s;
+    /* gap으로 간격 제어중이지만 안전하게 마진 추가 안함 (gap 사용) */
+}
+
+#btn-start-shopping:hover {
+    background-color: #C80000; /* 호버 색상 */
+    transform: translateY(-1px); /* 살짝 올라가는 효과 (선택사항) */
+}
+
+/* 애니메이션 */
 @keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
 }
-
-/* 페이드아웃 + 왼쪽으로 슬라이드 퇴장 */
 @keyframes slideOutLeft {
-    from {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateX(-40px);
-    }
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(-40px); }
 }
 
-.slide-in {
-    animation: slideInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.slide-out {
-    animation: slideOutLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
+.slide-in { animation: slideInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.slide-out { animation: slideOutLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .fade-in { animation: fadeIn 1s ease-out forwards; }
 
-/* =========================================
-   [NEW] 온보딩 배경 이미지 설정
-========================================= */
 #onboarding-bg {
     background-position: center;
     background-size: cover;

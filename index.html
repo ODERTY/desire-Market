@@ -43,80 +43,53 @@
 
         <!-- [메인 영역] -->
         <main class="main-hero relative flex justify-center items-center overflow-hidden">
-            <!-- 배경 이미지: 인라인 스타일 제거하고 CSS id로 제어 -->
+            <!-- 배경 이미지 -->
             <div id="onboarding-bg" class="absolute inset-0 z-10"></div>
             
             <div class="main-hero-inner relative z-20 w-full h-full flex justify-center items-center">
                 
                 <!-- [STEP 1] 로그인 프레임 -->
                 <div id="login-frame" class="bg-white rounded-[20px] relative shadow-2xl" style="width: 426px; height: 395px;">
-                    <!-- 타임마켓 로고 -->
-                    <div class="absolute left-[30px] top-[41px] font-['Galmuri11'] text-[20px] text-black leading-none">
-                        타임마켓
-                    </div>
-
-                    <!-- 헤드라인 -->
-                    <div class="absolute left-[30px] top-[68px] font-['Pretendard'] font-semibold text-[40px] text-black leading-tight tracking-tight whitespace-nowrap">
-                        회원가입 후 쿠폰 지급
-                    </div>
-
-                    <!-- 서브 텍스트 -->
-                    <div class="absolute left-[30px] top-[145px] font-['Pretendard'] font-bold text-[20px] text-black leading-none">
-                        반갑습니다.
-                    </div>
-                    <div class="absolute left-[30px] top-[169px] font-['Pretendard'] font-bold text-[20px] text-black leading-none">
-                        고객님의 정보를 입력해주세요.
-                    </div>
-
-                    <!-- 이름 입력 박스 -->
+                    <div class="absolute left-[30px] top-[41px] font-['Galmuri11'] text-[20px] text-black leading-none">타임마켓</div>
+                    <div class="absolute left-[30px] top-[68px] font-['Pretendard'] font-semibold text-[40px] text-black leading-tight tracking-tight whitespace-nowrap">회원가입 후 쿠폰 지급</div>
+                    <div class="absolute left-[30px] top-[145px] font-['Pretendard'] font-bold text-[20px] text-black leading-none">반갑습니다.</div>
+                    <div class="absolute left-[30px] top-[169px] font-['Pretendard'] font-bold text-[20px] text-black leading-none">고객님의 정보를 입력해주세요.</div>
+                    
                     <input type="text" id="username-input" 
-                        class="absolute left-[30px] top-[207px] w-[367px] h-[53px] 
-                               bg-transparent border border-[#212121] rounded-[6px] 
-                               px-[17px] py-[14px] 
-                               font-['Pretendard'] font-bold text-[20px] text-[#121212]
-                               placeholder:text-[#121212] placeholder:opacity-25 outline-none focus:border-black"
+                        class="absolute left-[30px] top-[207px] w-[367px] h-[53px] bg-transparent border border-[#212121] rounded-[6px] px-[17px] py-[14px] font-['Pretendard'] font-bold text-[20px] text-[#121212] placeholder:text-[#121212] placeholder:opacity-25 outline-none focus:border-black"
                         placeholder="이름을 입력" maxlength="10">
 
-                    <!-- 확인 버튼 -->
                     <button id="btn-login-confirm" disabled
-                        class="absolute left-[156px] bottom-[41px] w-[114px] h-[44px] 
-                               bg-[#D3D3D3] rounded-[50px] flex justify-center items-center
-                               transition-colors duration-200 cursor-not-allowed">
+                        class="absolute left-[156px] bottom-[41px] w-[114px] h-[44px] bg-[#D3D3D3] rounded-[50px] flex justify-center items-center transition-colors duration-200 cursor-not-allowed">
                         <span class="font-['Pretendard'] font-bold text-[20px] text-white leading-none">확인</span>
                     </button>
                 </div>
 
-                <!-- [STEP 2] 텍스트 온보딩 -->
-                <section id="page-onboarding-text" class="hidden w-full h-full flex flex-col items-center justify-center relative">
-                    <div class="h-40 flex items-center justify-center text-center">
-                        <h1 id="typing-text" class="text-2xl md:text-4xl font-bold leading-relaxed text-white font-mono drop-shadow-md">
-                            <!-- JS로 글자가 입력됨 -->
-                        </h1>
+                <!-- [STEP 2] 텍스트 온보딩 (구조 수정됨) -->
+                <section id="page-onboarding-text" class="hidden w-full h-full relative">
+                    <!-- 배경 박스 (메시지와 버튼을 감싸는 컨테이너) -->
+                    <div class="onboarding-box">
+                        <!-- 메시지 텍스트 -->
+                        <div id="onboarding-message" class="onboarding-text">
+                            <!-- JS로 텍스트 입력됨 -->
+                        </div>
+                        
+                        <!-- 시작 버튼 (박스 내부로 이동, 스타일 CSS로 제어) -->
+                        <button id="btn-start-shopping" class="hidden">
+                            구매 시작하기
+                        </button>
                     </div>
-                    <button id="btn-start-shopping" class="hidden mt-12 px-8 py-3 bg-white text-black font-bold rounded hover:bg-gray-200 transition-colors duration-300 shadow-lg">
-                        쇼핑 시작하기
-                    </button>
                 </section>
 
-                <!-- [PAGE 2] 쇼핑 -->
+                <!-- [PAGE 2,3,4] ... (기존 유지) -->
                 <section id="page-shopping" class="hidden w-full h-full text-white bg-black/80 backdrop-blur-sm">
-                    <div class="flex items-center justify-center h-full text-gray-400">
-                        쇼핑 페이지 준비 중...
-                    </div>
+                    <div class="flex items-center justify-center h-full text-gray-400">쇼핑 페이지 준비 중...</div>
                 </section>
-
-                <!-- [PAGE 3] 장바구니 -->
                 <section id="page-cart" class="hidden w-full h-full text-white bg-black">
-                    <div class="flex items-center justify-center h-full text-gray-400">
-                        장바구니 페이지 준비 중...
-                    </div>
+                    <div class="flex items-center justify-center h-full text-gray-400">장바구니 페이지 준비 중...</div>
                 </section>
-
-                <!-- [PAGE 4] 결산 -->
                 <section id="page-report" class="hidden w-full h-full text-white bg-black">
-                    <div class="flex items-center justify-center h-full text-gray-400">
-                        결산 페이지 준비 중...
-                    </div>
+                    <div class="flex items-center justify-center h-full text-gray-400">결산 페이지 준비 중...</div>
                 </section>
 
             </div>
