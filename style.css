@@ -36,7 +36,7 @@ body.main-page {
 }
 
 /* =========================================
-   2. 상단 배너 (위치 수정 완료)
+   2. 상단 배너 (사용자 수정값 유지)
 ========================================= */
 .top-banner { background: linear-gradient(90deg, #960000 0%, #de3b00 100%); height: 85px; flex-shrink: 0; }
 .top-banner-inner { position: relative; height: 100%; width: 100%; }
@@ -63,9 +63,10 @@ body.main-page {
   gap: 40px;
 }
 
-/* About: 오른쪽에서 12% 지점 */
+/* About: 사용자 지정 위치 (-88%, 38%) 유지 */
 .top-banner-about { 
   position: absolute; 
+  margin-left: 40px;
   right: -88%; 
   top: 38%; 
   transform: translate(-50%, -50%);
@@ -106,9 +107,8 @@ body.main-page {
 
 /* 좁은 화면 대응 */
 @media (max-width: 1400px) {
-    /* 화면이 좁아지면 12% 여백이 너무 넓을 수 있으므로 줄임 */
     .top-banner-logo { left: 5%; font-size: 32px; }
-    .top-banner-about { right: 5%; font-size: 16px; }
+    /* About 위치는 사용자가 지정한 특수 값이므로 미디어쿼리에서도 주의 필요. 필요시 조정 */
     .top-banner-nav { gap: 20px; }
     .top-banner-nav a { font-size: 16px; }
 }
@@ -142,7 +142,7 @@ body.main-page {
 .main-hero-inner { flex: 1; width: 100%; position: relative; }
 
 /* =========================================
-   5. 푸터 (단순 밑줄)
+   5. 푸터
 ========================================= */
 .site-footer { background-color: #960000; height: 57px; flex-shrink: 0; }
 .footer-inner {
@@ -168,11 +168,40 @@ body.main-page {
 }
 
 /* =========================================
-   6. 유틸 & 애니메이션
+   6. 유틸 & 애니메이션 (수정됨)
 ========================================= */
-@keyframes blink { 0%, 100% { border-color: transparent; } 50% { border-color: #4ade80; } }
-#typing-text { border-right: 3px solid #4ade80; padding-right: 5px; animation: blink 0.75s step-end infinite; white-space: pre-line; }
-.cursor-hide { border-right: none !important; animation: none !important; }
+/* 페이드인 + 오른쪽에서 슬라이드 진입 */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 페이드아웃 + 왼쪽으로 슬라이드 퇴장 */
+@keyframes slideOutLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+}
+
+.slide-in {
+    animation: slideInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.slide-out {
+    animation: slideOutLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .fade-in { animation: fadeIn 1s ease-out forwards; }
 

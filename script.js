@@ -6,7 +6,7 @@ const elLoginFrame = document.getElementById('login-frame');
 const elUsernameInput = document.getElementById('username-input');
 const elBtnLoginConfirm = document.getElementById('btn-login-confirm');
 const elPageOnboardingText = document.getElementById('page-onboarding-text');
-const elTypingText = document.getElementById('typing-text');
+const elTypingText = document.getElementById('typing-text'); // 메시지가 표시될 h1
 const elBtnStartShopping = document.getElementById('btn-start-shopping');
 const elPageShopping = document.getElementById('page-shopping');
 const elOnboardingBg = document.getElementById('onboarding-bg');
@@ -32,18 +32,33 @@ elBtnLoginConfirm.addEventListener('click', () => {
 
     elLoginFrame.classList.add('hidden');
     elPageOnboardingText.classList.remove('hidden');
+    
+    // 텍스트 온보딩 시퀀스 시작
     runOnboardingTextSequence();
 });
 
-// --- 기능 3: 타이핑 효과 ---
-async function typeWriter(text) {
-    elTypingText.textContent = ""; 
-    for (let i = 0; i < text.length; i++) {
-        elTypingText.textContent += text[i];
-        const delay = Math.random() * 50 + 50; 
-        await new Promise(resolve => setTimeout(resolve, delay));
-    }
-    await new Promise(resolve => setTimeout(resolve, 1000));
+// --- 기능 3: 텍스트 슬라이드 애니메이션 (수정됨) ---
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function animateMessage(text) {
+    // 1. 텍스트 설정 및 초기화
+    elTypingText.textContent = text;
+    elTypingText.classList.remove('slide-out', 'hidden');
+    
+    // 2. 등장 (오른쪽 -> 중앙)
+    elTypingText.classList.add('slide-in');
+    
+    // 3. 읽는 시간 대기 (등장 애니메이션 시간 + 대기 시간)
+    await wait(2500); 
+    
+    // 4. 퇴장 (중앙 -> 왼쪽)
+    elTypingText.classList.remove('slide-in');
+    elTypingText.classList.add('slide-out');
+    
+    // 5. 퇴장 애니메이션 완료 대기
+    await wait(600); 
 }
 
 async function runOnboardingTextSequence() {
@@ -55,11 +70,15 @@ async function runOnboardingTextSequence() {
         "60초 안에 사용하지 않으면 소멸됩니다."
     ];
 
+    // 순차적으로 메시지 애니메이션 실행
     for (const msg of messages) {
-        await typeWriter(msg);
+        await animateMessage(msg);
     }
     
-    elTypingText.classList.add('cursor-hide');
+    // 모든 메시지 종료 후 버튼 등장
+    // 마지막 메시지가 slide-out 된 상태이므로 텍스트 숨김 처리
+    elTypingText.classList.add('hidden'); 
+    
     elBtnStartShopping.classList.remove('hidden');
     elBtnStartShopping.classList.add('fade-in');
 }
@@ -72,9 +91,8 @@ elBtnStartShopping.addEventListener('click', () => {
     console.log("쇼핑 시작!");
 });
 
-// --- 기능 5: 네온 마퀴 (자동 실행 - 수정됨) ---
+// --- 기능 5: 네온 마퀴 (자동 실행) ---
 function setupNeonMarquee() {
-  // [수정] querySelector 대신 querySelectorAll을 사용하여 모든 네온바를 선택
   const tracks = document.querySelectorAll(".js-neon-track");
   
   tracks.forEach(track => {
@@ -85,13 +103,10 @@ function setupNeonMarquee() {
       const marqueeWidth = marquee.offsetWidth;
       let trackWidth = track.scrollWidth;
 
-      // 트랙 길이가 네온바의 2배가 될 때까지 복제
       while (trackWidth < marqueeWidth * 2) {
         track.insertAdjacentHTML("beforeend", baseHtml);
         trackWidth = track.scrollWidth;
       }
-      
-      // 모든 트랙에 애니메이션 클래스 추가
       track.classList.add("is-animating");
   });
 }
