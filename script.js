@@ -578,11 +578,11 @@ async function animateMessage(text, isLast = false) {
     elOnboardingMessage.textContent = text;
     elOnboardingMessage.classList.remove('slide-out', 'hidden');
     elOnboardingMessage.classList.add('slide-in');
-    await wait(2500); 
+    await wait(1500); 
     if (!isLast) {
         elOnboardingMessage.classList.remove('slide-in');
         elOnboardingMessage.classList.add('slide-out');
-        await wait(600); 
+        await wait(450); 
     }
 }
 
@@ -590,9 +590,9 @@ async function runOnboardingTextSequence() {
     const messages = [
         `반갑습니다, ${userName}님.`,
         "타임마켓 서버에 접속했습니다.",
-        "특별 할인 쿠폰 7장이 발급되었습니다.",
-        "주의하세요.",
-        "60초 안에 사용하지 않으면 소멸됩니다."
+        "블프 할인 쿠폰 7장이 발급되었습니다.",
+        "주의하세요!",
+        "하나 당 30초 안에 사용하지 않으면 실패입니다."
     ];
     for (let i = 0; i < messages.length; i++) {
         await animateMessage(messages[i], i === messages.length - 1);

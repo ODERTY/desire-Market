@@ -114,7 +114,7 @@ body.main-page { margin: 0; font-family: 'Pretendard', sans-serif; background-co
 .product-name { font-family: 'Pretendard', sans-serif; font-weight: 800; font-size: 32px; color: #121212; line-height: 1.2; margin-bottom: 19px; }
 .divider-line { width: 100%; height: 1px; background-color: #C4C4C4; flex-shrink: 0; }
 .desc-title { font-family: 'Pretendard', sans-serif; font-weight: 600; font-size: 18px; color: #B23030; margin-top: 10px; margin-bottom: 11px; }
-.desc-body { font-family: 'Pretendard', sans-serif; font-weight: 400; font-size: 14px; color: #282828; line-height: 1.5; word-break: keep-all; margin-bottom: 11px; }
+.desc-body { font-family: 'Pretendard', sans-serif; font-weight: 400; font-size: 14px; color: #282828; line-height: 1.4; word-break: keep-all; margin-bottom: 11px; }
 .price-container { display: flex; align-items: baseline; margin-top: 14px; margin-bottom: 15px; }
 .price-sale { font-family: 'Pretendard', sans-serif; font-weight: 600; font-size: 24px; color: #C60100; margin-right: 7px; }
 .price-original { font-family: 'Pretendard', sans-serif; font-weight: 400; font-size: 15px; color: #626262; }
@@ -122,10 +122,10 @@ body.main-page { margin: 0; font-family: 'Pretendard', sans-serif; background-co
 .btn-buy-product { width: 400px; height: 50px; background-color: #C60100; border-radius: 30px; display: flex; justify-content: center; align-items: center; font-family: 'Pretendard', sans-serif; font-weight: 700; font-size: 20px; color: #FFFFFF; padding: 10px 79px; cursor: pointer; transition: background-color 0.2s, transform 0.1s; border: none; margin-bottom: 24px; }
 .btn-buy-product:hover { background-color: #E60000; transform: translateY(-1px); }
 .btn-buy-product:active { transform: translateY(0); }
-.review-stats { display: flex; align-items: center; margin-top: 17px; font-family: 'Pretendard', sans-serif; font-size: 15px; font-weight: 400; color: #626262; }
+.review-stats { display: flex; align-items: center; margin-top: 12px; font-family: 'Pretendard', sans-serif; font-size: 15px; font-weight: 400; color: #626262; }
 .review-divider-vertical { width: 1px; height: 15px; background-color: #626262; margin-left: 8px; margin-right: 8px; }
-.review-star-icon { width: 20px; height: 20px; margin-right: 1px; background-size: contain; background-repeat: no-repeat; background-position: center; background-image: url('https://placehold.co/20x20/FFD700/FFFFFF/png?text=★'); }
-.reviewer-info { display: flex; align-items: center; margin-top: 17px; font-family: 'Pretendard', sans-serif; }
+.review-star-icon { width: 20px; height: 20px; margin-right: 1px; background-size: contain; background-repeat: no-repeat; background-position: center; background-image: url('Star 2.png'); }
+.reviewer-info { display: flex; align-items: center; margin-top: 12px; font-family: 'Pretendard', sans-serif; }
 .reviewer-name { font-weight: 600; font-size: 16px; color: #000000; margin-right: 25px; }
 .reviewer-date { font-weight: 400; font-size: 16px; color: #797979; }
-.review-content { margin-top: 9px; font-family: 'Pretendard', sans-serif; font-weight: 400; font-size: 15px; color: #222222; line-height: 1.4; }
+.review-content { margin-top: 6px; font-family: 'Pretendard', sans-serif; font-weight: 400; font-size: 15px; color: #222222; line-height: 1.3; }
