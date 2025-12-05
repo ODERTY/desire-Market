@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>타임마켓 – About</title>
+
+  <!-- 어바웃 전용 CSS -->
+  <link rel="stylesheet" href="time-market-common.css" />
+</head>
+<body class="about-page">
+  <div class="page-wrapper">
+
+    <!-- ===== 상단 배너 (메인과 동일 구조) ===== -->
+    <header class="top-banner">
+      <div class="top-banner-inner">
+
+        <!-- 타임마켓 로고 (Galmuri11) -->
+        <a href="next.html" class="top-banner-logo">타임마켓</a>
+
+        <!-- 상단 네비 (GMarketSans Medium, 20pt) -->
+       <nav class="top-banner-nav">
+      <a href="#">베스트셀러 상품</a>
+      <a href="#">신상품 이벤트</a>
+      <a href="#">최고 평점 상품</a>
+      <a href="#">슈퍼딜</a>
+    </nav>
+
+        <!-- 오른쪽 About (활성 상태) -->
+        <a href="about.html" class="top-banner-about top-banner-about--active">
+          About
+        </a>
+      </div>
+    </header>
+
+<div class="neon-bar">
+  <div class="neon-marquee">
+    <div class="neon-track js-neon-track">
+      <span class="neon-item">타임세일</span>
+      <span class="neon-item">무료배송</span>
+    </div>
+  </div>
+</div>
+
+  <!-- ===== 어바웃 메인 영역 ===== -->
+    <main class="about-hero">
+      <div class="about-hero-inner">
+
+        <section class="about-panel">
+          <!-- 항상 보이는 흰색 텍스트 -->
+          <div class="about-panel-inner">
+            <h1 class="about-title">타임마켓</h1>
+            <h2 class="about-subtitle">시대를 초월한 베스트셀러들의 부활</h2>
+
+            <p class="about-body">
+              타임마켓은 과거의 상품부터 최신 상품까지, 인류 역사상 가장 빛났던 순간들만을 엄선하여 당신에게 제안합니다. 
+              당신이 고민하던 건강, 거울을 볼 때마다 갈망하던 젊음, 그리고 불확실한 미래에 대한 안전까지. 
+              우리는 그 모든 불안을 잠재울 완벽한 솔루션을 시대를 건너 찾아냈습니다. 
+            </p>
+
+            <p class="about-body">
+              이곳에 진열된 상품들은 수많은 사람들의 선택으로 증명된 역사적 베스트셀러를 재해석한 상품들 입니다. 
+              찰나의 시간, 당신의 본능이 이끄는 곳에 답이 있습니다. 망설이지 마세요!! 시간은 유한합니다!
+            </p>
+
+          </div>
+
+          <!-- 숨겨진 검은 텍스트 (흰색 원 커서로만 보이는 레이어) -->
+          <div class="about-panel-hidden" id="secret-panel">
+            <!-- 여기는 네가 숨겨두고 싶은 다른 버전의 어바웃을 적으면 됨 -->
+            <h1 class="about-title">타임마켓</h1>
+            <h2 class="about-subtitle">당신이 구매한 욕망은?</h2>
+
+ <p class="about-body">
+            이것은 쇼핑몰이 아닙니다. 유사과학 상품과 과장된 광고가 넘쳐나는 피드 속에서, 우리는 사람들이 무엇을 “믿고” 무엇에 끌리는지 그 흔적을 기록해 보고 싶었습니다. 
+            그래서 물건을 파는 대신, 광고 문구와 이미지가 어떻게 욕망을 건드리는지 스스로 체험하게 하는 공간을 만들고자 했습니다.
+            </p>
+
+            <p class="about-body">
+            타임마켓은 쇼핑 사이트이면서 동시에 작은 아카이브입니다. 쿠폰과 할인이 끝나도 남는 것은,
+            결국 당신이 무엇에 끌렸는지에 대한 기록이라고 믿습니다. 언젠가 다시 한 번 같은 광고 문구에
+            반응하게 될 때, 이 페이지가 조용히 그 반복을 증명해 줄지도 모릅니다.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- ===== 하단 푸터 ===== -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <a href="#">회사 소개</a>
+        <a href="#">채용정보</a>
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+      </div>
+    </footer>
+
+  </div> <!-- .page-wrapper 끝 -->
+
+  <!-- 흰색 원 커서 -->
+  <div id="cursor-circle"></div>
+
+  <!-- 어바웃 전용 JS -->
+  <script src="about.js"></script>
+</body>
+</html>

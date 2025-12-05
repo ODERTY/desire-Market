@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desire Shop - Time Market</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- JS Logic -->
+    <script src="script.js" defer></script>
+</head>
+<body class="main-page">
+    <div class="page-wrapper">
+        
+        <!-- [Persistent] 상단 배너 -->
+        <header class="top-banner">
+            <div class="top-banner-inner">
+                <!-- 로고 클릭 시 새로고침 -->
+                <a href="../next.html" class="top-banner-logo">타임마켓</a>
+                <nav class="top-banner-nav">
+                    <a href="#" class="menu-link" data-msg="이곳은 당신의 욕망을 비추는 거울입니다.">베스트셀러 상품</a>
+                    <a href="#" class="menu-link" data-msg="새로운 자극을 찾고 계신가요?">신상품 이벤트</a>
+                    <a href="#" class="menu-link" data-msg="타인의 평가에 민감하시군요.">최고 평점 상품</a>
+                    <a href="#" class="menu-link" data-msg="놓칠 수 없는 기회에 집착합니다.">슈퍼딜</a>
+                </nav>
+                <a href="../about.html" class="top-banner-about">About</a>
+            </div>
+        </header>
+
+        <!-- [Persistent] 상단 네온바 -->
+        <div class="neon-bar" id="top-marquee">
+            <div class="neon-marquee">
+                <div class="neon-track js-neon-track">
+                    <span class="neon-item">타임세일</span>
+                    <span class="neon-item">무료배송</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- [메인 영역] -->
+        <main class="main-hero relative flex justify-center items-center overflow-hidden">
+            <!-- 배경 이미지 -->
+            <div id="onboarding-bg" class="absolute inset-0 z-10"></div>
+            
+            <div class="main-hero-inner relative z-20 w-full h-full flex justify-center items-center">
+                
+                <!-- [STEP 1] 로그인 프레임 -->
+                <div id="login-frame" class="bg-white rounded-[20px] relative shadow-2xl" style="width: 426px; height: 395px;">
+                    <div class="absolute left-[30px] top-[41px] font-['Galmuri11'] text-[20px] text-black leading-none">타임마켓</div>
+                    <div class="absolute left-[30px] top-[68px] font-['Pretendard'] font-semibold text-[40px] text-black leading-tight tracking-tight whitespace-nowrap">회원가입 후 쿠폰 지급</div>
+                    <div class="absolute left-[30px] top-[145px] font-['Pretendard'] font-bold text-[20px] text-black leading-none">반갑습니다.</div>
+                    <div class="absolute left-[30px] top-[169px] font-['Pretendard'] font-bold text-[20px] text-black leading-none">고객님의 정보를 입력해주세요.</div>
+                    
+                    <input type="text" id="username-input" 
+                        class="absolute left-[30px] top-[207px] w-[367px] h-[53px] bg-transparent border border-[#212121] rounded-[6px] px-[17px] py-[14px] font-['Pretendard'] font-bold text-[20px] text-[#121212] placeholder:text-[#121212] placeholder:opacity-25 outline-none focus:border-black"
+                        placeholder="이름을 입력" maxlength="10">
+
+                    <button id="btn-login-confirm" disabled
+                        class="absolute left-[156px] bottom-[41px] w-[114px] h-[44px] bg-[#D3D3D3] rounded-[50px] flex justify-center items-center transition-colors duration-200 cursor-not-allowed">
+                        <span class="font-['Pretendard'] font-bold text-[20px] text-white leading-none">확인</span>
+                    </button>
+                </div>
+
+                <!-- [STEP 2] 텍스트 온보딩 -->
+                <section id="page-onboarding-text" class="hidden w-full h-full relative">
+                    <div class="onboarding-box">
+                        <div id="onboarding-message" class="onboarding-text"></div>
+                        <button id="btn-start-shopping" class="hidden">구매 시작하기</button>
+                    </div>
+                </section>
+
+                <!-- [PAGE 2] 쇼핑 -->
+                <section id="page-shopping" class="hidden w-full h-full text-white relative">
+                    <div id="carousel-track">
+                        <!-- Card Items Injected Here -->
+                    </div>
+                </section>
+
+                <!-- [PAGE 3] 장바구니 -->
+                <section id="page-cart" class="hidden w-full h-full relative overflow-y-auto">
+                    <div class="w-full flex flex-col items-center pt-[100px] pb-[100px]">
+                        <div class="cart-container">
+                            <div class="cart-title">구매목록</div>
+                            <div id="cart-list-wrapper"></div>
+                            <div id="cart-summary-wrapper"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- [PAGE 4] 결산 (수정됨: 배경색 제거) -->
+                <section id="page-report" class="hidden w-full h-full text-white flex-col justify-center items-center overflow-y-auto z-50">
+                    <div class="w-full h-full overflow-y-auto flex justify-center py-[100px]">
+                        <div id="report-card">
+                            <!-- JS로 내용이 채워집니다 -->
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- [Persistent] 하단 네온바 -->
+        <div class="neon-bar" id="bottom-marquee">
+            <div class="neon-marquee">
+                <div class="neon-track js-neon-track">
+                    <span class="neon-item">타임세일</span>
+                    <span class="neon-item">무료배송</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- [Persistent] 하단 푸터 -->
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <a href="#">회사 소개</a>
+                <a href="#">채용정보</a>
+                <a href="#">이용약관</a>
+                <a href="#">개인정보처리방침</a>
+            </div>
+        </footer>
+
+        <!-- 글리치 효과용 오버레이 -->
+        <div id="glitch-overlay"></div>
+
+        <!-- [NEW] 커스텀 알림 팝업 -->
+        <div id="custom-alert-overlay" class="hidden">
+            <div class="custom-alert-box">
+                <div class="alert-top-bar">
+                    <span>페이지 알림!</span>
+                </div>
+                <div class="alert-content">
+                    <p id="alert-message">평소에 안정성을 추구하는 성향으로 파악됩니다.</p>
+                </div>
+                <div class="alert-footer">아무곳이나 클릭하여 닫기</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

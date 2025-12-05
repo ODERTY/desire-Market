@@ -1,119 +1,257 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desire Shop - Time Market</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- JS Logic -->
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DW 뉴스</title>
+
+  <!-- 우리 CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="main-page">
-    <div class="page-wrapper">
-        
-        <!-- [Persistent] 상단 배너 -->
-        <header class="top-banner">
-            <div class="top-banner-inner">
-                <div class="top-banner-logo">타임마켓</div>
-                <nav class="top-banner-nav">
-                    <a href="#">베스트셀러 상품</a>
-                    <a href="#">신상품 이벤트</a>
-                    <a href="#">최고 평점 상품</a>
-                    <a href="#">슈퍼딜</a>
-                </nav>
-                <a href="#" class="top-banner-about">About</a>
-            </div>
-        </header>
+<body>
 
-        <!-- [Persistent] 상단 네온바 -->
-        <div class="neon-bar" id="top-marquee">
-            <div class="neon-marquee">
-                <div class="neon-track js-neon-track">
-                    <span class="neon-item">타임세일</span>
-                    <span class="neon-item">무료배송</span>
-                </div>
-            </div>
-        </div>
+  <!-- 1. 상단 헤더 (팝업 트리거 유지) -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- 로고 -->
+      <div class="site-logo js-ad-trigger">
+        DW
+      </div>
 
-        <!-- [메인 영역] -->
-        <main class="main-hero relative flex justify-center items-center overflow-hidden">
-            <!-- 배경 이미지 -->
-            <div id="onboarding-bg" class="absolute inset-0 z-10"></div>
-            
-            <div class="main-hero-inner relative z-20 w-full h-full flex justify-center items-center">
-                
-                <!-- [STEP 1] 로그인 프레임 -->
-                <div id="login-frame" class="bg-white rounded-[20px] relative shadow-2xl" style="width: 426px; height: 395px;">
-                    <div class="absolute left-[30px] top-[41px] font-['Galmuri11'] text-[20px] text-black leading-none">타임마켓</div>
-                    <div class="absolute left-[30px] top-[68px] font-['Pretendard'] font-semibold text-[40px] text-black leading-tight tracking-tight whitespace-nowrap">회원가입 후 쿠폰 지급</div>
-                    <div class="absolute left-[30px] top-[145px] font-['Pretendard'] font-bold text-[20px] text-black leading-none">반갑습니다.</div>
-                    <div class="absolute left-[30px] top-[169px] font-['Pretendard'] font-bold text-[20px] text-black leading-none">고객님의 정보를 입력해주세요.</div>
-                    
-                    <input type="text" id="username-input" 
-                        class="absolute left-[30px] top-[207px] w-[367px] h-[53px] bg-transparent border border-[#212121] rounded-[6px] px-[17px] py-[14px] font-['Pretendard'] font-bold text-[20px] text-[#121212] placeholder:text-[#121212] placeholder:opacity-25 outline-none focus:border-black"
-                        placeholder="이름을 입력" maxlength="10">
+      <!-- 카테고리 -->
+      <nav class="site-nav">
+        <a class="js-ad-trigger" href="#">정치</a>
+        <a class="js-ad-trigger" href="#">경제</a>
+        <a class="js-ad-trigger" href="#">사회</a>
+        <a class="js-ad-trigger" href="#">국제</a>
+        <a class="js-ad-trigger" href="#">생활</a>
+        <a class="js-ad-trigger" href="#">IT</a>
+      </nav>
 
-                    <button id="btn-login-confirm" disabled
-                        class="absolute left-[156px] bottom-[41px] w-[114px] h-[44px] bg-[#D3D3D3] rounded-[50px] flex justify-center items-center transition-colors duration-200 cursor-not-allowed">
-                        <span class="font-['Pretendard'] font-bold text-[20px] text-white leading-none">확인</span>
-                    </button>
-                </div>
+      <!-- 검색 -->
+      <div class="header-search">
+        <span class="search-icon">🔍</span>
+        <input
+          class="js-ad-trigger"
+          type="text"
+          placeholder="검색"
+        />
+      </div>
 
-                <!-- [STEP 2] 텍스트 온보딩 -->
-                <section id="page-onboarding-text" class="hidden w-full h-full relative">
-                    <div class="onboarding-box">
-                        <div id="onboarding-message" class="onboarding-text"></div>
-                        <button id="btn-start-shopping" class="hidden">구매 시작하기</button>
-                    </div>
-                </section>
-
-                <!-- [PAGE 2] 쇼핑 (트랙 구조) -->
-                <section id="page-shopping" class="hidden w-full h-full text-white relative">
-                    <!-- 가로 스크롤 트랙 (JS에서 카드 주입) -->
-                    <div id="carousel-track">
-                        <!-- Card Items Injected Here -->
-                    </div>
-                </section>
-
-                <!-- [PAGE 3] 장바구니 -->
-                <section id="page-cart" class="hidden w-full h-full text-white bg-black">
-                    <div class="flex items-center justify-center h-full text-gray-400">장바구니 페이지 준비 중...</div>
-                </section>
-
-                <!-- [PAGE 4] 결산 -->
-                <section id="page-report" class="hidden w-full h-full text-white bg-black">
-                    <div class="flex items-center justify-center h-full text-gray-400">결산 페이지 준비 중...</div>
-                </section>
-
-            </div>
-        </main>
-
-        <!-- [Persistent] 하단 네온바 -->
-        <div class="neon-bar" id="bottom-marquee">
-            <div class="neon-marquee">
-                <div class="neon-track js-neon-track">
-                    <span class="neon-item">타임세일</span>
-                    <span class="neon-item">무료배송</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- [Persistent] 하단 푸터 -->
-        <footer class="site-footer">
-            <div class="footer-inner">
-                <a href="#">회사 소개</a>
-                <a href="#">채용정보</a>
-                <a href="#">이용약관</a>
-                <a href="#">개인정보처리방침</a>
-            </div>
-        </footer>
-
+      <!-- 로그인 -->
+      <button class="header-login js-ad-trigger">
+        로그인
+      </button>
     </div>
+  </header>
+
+  <!-- 2. 상단 가로 배너 (→ next.html로 이동, 이미지 사용) -->
+  <section class="top-banner-section">
+    <div class="top-banner-inner">
+      <a href="next.html" class="ad-banner ad-banner--top">
+        <span class="ad-badge">AD · 상단 배너</span>
+        <!-- 여기 src에 너가 만든 가로 배너 PNG 넣으면 됨 -->
+        <img
+          src="images/상단 가로 배너.png"
+          alt="2025 타임마켓, 일년에 딱 한 번 93% 할인"
+          class="ad-banner__image"
+        />
+      </a>
+    </div>
+  </section>
+
+  <!-- 3. 본문 레이아웃 -->
+  <div class="page-layout">
+
+    <!-- 3-1. 왼쪽 세로 배너 (→ next.html로 이동, 이미지 사용) -->
+    <aside class="left-column">
+      <div class="left-column-inner">
+        <a href="next.html" class="ad-banner ad-banner--left">
+          <span class="ad-badge">AD · 스카이스크래퍼</span>
+          <!-- 세로 배너 PNG -->
+          <img
+            src="images/좌측 세로 배너.png"
+            alt="2025 타임마켓 BLACK FRIDAY 93% 선착순 쿠폰"
+            class="ad-banner__image"
+          />
+        </a>
+      </div>
+    </aside>
+
+    <!-- 3-2. 가운데 메인 기사 -->
+    <main class="main-column">
+
+      <!-- 메인 기사 카드 -->
+      <article class="article-card">
+        <div class="article-header">
+          <h1 class="article-title">
+            SNS ‘건강템’ 광고 급증…효과는 검증됐나
+          </h1>
+          <div class="article-meta">
+            2025.11.01 09:00 · 기자 홍길동
+          </div>
+        </div>
+
+  <div class="article-hero-image">
+    <img
+      src="images/메인 기사.png"
+      alt="SNS 건강템 광고와 관련된 보충제 이미지"
+    />
+  </div>
+
+
+        <div class="article-body">
+          <p>
+            짧은 영상 플랫폼과 SNS를 중심으로 ‘즉시 효과’를 내세운 건강·뷰티 제품 광고가 급증하고 있다.
+            플랫폼 내 쇼핑 연동과 원클릭 결제는 소비자가 영상에서 바로 구매 페이지로 이동하게 만들며,
+            체험담·숏폼 데모·짧은 슬로건이 판단을 앞지르는 환경을 조성한다.
+          </p>
+
+          <p>
+            이들 광고는 ‘사용 전·후’ 사진, 확대된 피부 조직 이미지, 수치 그래프,
+            과학 장비를 연상시키는 배경 소품을 적극 활용한다. 자료의 출처가 모호하거나
+            유의미한 설계가 아닌 경우에도, 숫자와 흰색 가운, 파란색 톤의 차트만으로
+            신뢰가 형성되는 경향이 크다.
+          </p>
+
+          <!-- 본문 중간 광고 (→ next.html, 이미지 사용) -->
+          <a href="next.html" class="ad-banner ad-banner--inline">
+            <span class="ad-badge">AD · 중간 배너</span>
+            <!-- 본문 중간 가로 배너 PNG -->
+            <img
+              src="images/본문 중간 가로 배너.png"
+              alt="2025 타임마켓 BLACK FRIDAY"
+              class="ad-banner__image"
+            />
+          </a>
+
+          <p>
+            전문가들은 근거가 빈약한 경우에도 ‘실험·임상’ 같은 단어와 단위(ppm, %, n= 등)가 붙으면
+            신뢰가 과잉 형성될 수 있다고 지적한다. 특히 ‘3일 만에 −3kg’, ‘10분 리프팅’처럼
+            짧은 시간과 큰 효과를 묶은 표현은 높은 클릭률을 유도하지만,
+            실제 연구 설계·대조군·지속성에 대한 설명은 빠져 있는 사례가 많다.
+          </p>
+
+          <p>
+            플랫폼 알고리즘도 영향을 준다. 한 번 시청·저장한 콘텐츠와 유사한 영상이 연속 노출되면서
+            선택이 강화되고, 리뷰·언박싱·전문가 코스프레 영상이 서로 신뢰를 보강하는
+            ‘에코체임버’가 만들어진다.
+          </p>
+
+          <p class="article-subtitle">소비자를 위한 빠른 체크리스트</p>
+          <ul class="article-list">
+            <li>숫자·단위(ppm, %, 임상 n= 등)의 <b>출처와 설계</b> 확인</li>
+            <li>체험담·리뷰의 <b>광고 표기</b> 및 <b>선별 편향</b> 점검</li>
+            <li>‘즉시/완벽/기적’ 표현은 <b>경고 신호</b></li>
+            <li>‘파동·에너지·해독’ 등 대체 과학 용어의 <b>인과 단정</b> 주의</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 연관 기사 (여기는 계속 팝업 트리거) -->
+      <section class="related-section">
+        <div class="related-header">연관 기사</div>
+        <div class="related-list">
+          <a href="#" class="related-item js-ad-trigger">
+            <div class="related-thumb"></div>
+            <div class="related-text">
+              <div class="related-title">
+                정부, 건강기능식품 표시·광고 일제 점검
+              </div>
+              <div class="related-meta">2025.11.01 09:01 · 사회부</div>
+            </div>
+          </a>
+          <a href="#" class="related-item js-ad-trigger">
+            <div class="related-thumb"></div>
+            <div class="related-text">
+              <div class="related-title">
+                “3일 만에 −3kg” 과장 광고…과태료 다수 적발
+              </div>
+              <div class="related-meta">2025.11.01 09:02 · 사회부</div>
+            </div>
+          </a>
+          <a href="#" class="related-item js-ad-trigger">
+            <div class="related-thumb"></div>
+            <div class="related-text">
+              <div class="related-title">
+                숏폼 알고리즘, 왜 비슷한 영상만 보일까
+              </div>
+              <div class="related-meta">2025.11.01 09:03 · 사회부</div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- 3-3. 오른쪽 사이드바 -->
+    <aside class="right-column">
+      <div class="right-column-inner">
+
+        <!-- 많이 본 뉴스 (팝업 트리거 유지) -->
+        <div class="popular-card">
+          <div class="popular-title">실시간 많이 본 뉴스</div>
+          <ol class="popular-list">
+            <li class="js-ad-trigger">
+              정부, 건강기능식품 표시·광고 일제 점검
+            </li>
+            <li class="js-ad-trigger">
+              “3일 −3kg” 과장 광고 적발
+            </li>
+            <li class="js-ad-trigger">
+              숏폼 알고리즘, 왜 비슷한 영상만 보일까
+            </li>
+            <li class="js-ad-trigger">
+              전문의 “디톡스·수소수, 근거 부족”
+            </li>
+          </ol>
+        </div>
+
+        <!-- 오른쪽 배너 (→ next.html, 이미지 사용) -->
+        <a href="next.html" class="ad-banner ad-banner--right">
+          <span class="ad-badge">AD · 배너</span>
+          <!-- 오른쪽 배너 PNG -->
+          <img
+            src="images/오른쪽 사이드 배너.png"
+            alt="2025 타임마켓 BLACK FRIDAY 93% 확인하러가기"
+            class="ad-banner__image"
+          />
+        </a>
+
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- 푸터 -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      © Daily World Corp.
+    </div>
+  </footer>
+
+<!-- 4. 팝업 광고 모달 (이미지 전체 클릭) -->
+<div id="popup-ad" class="popup-overlay">
+  <div id="popup-box" class="popup-inner">
+    <!-- 닫기 버튼 -->
+    <button
+      id="popup-close"
+      class="popup-close"
+      aria-label="닫기"
+    >
+      ×
+    </button>
+
+    <!-- 전체 영역 이미지만 보이게 -->
+    <img
+      id="popup-image"
+      src="images/팝업 상단 이미지.png"
+      alt="광고 이미지"
+      class="popup-image"
+    />
+  </div>
+</div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
 </body>
 </html>
