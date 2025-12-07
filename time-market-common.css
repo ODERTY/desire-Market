@@ -345,7 +345,7 @@ body.main-page {
 
   /* 1920 디자인 기준: 가운데(50%)에서 960px 왼쪽으로,
      거기서 280px 더 이동 */
-  left: calc(50% - 960px + 280px);
+  left: calc(50% - 960px + 315px);
   bottom: 142px;
 
   width: 400px;
@@ -513,4 +513,79 @@ body.about-page.cursor-hidden {
   padding: 80px 16px;
 }
 
+/* =========================================
+   [NEW] 커스텀 알림 팝업 스타일
+========================================= */
+#custom-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.42);
+    z-index: 9999; /* 최상위 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* hidden 클래스는 Tailwind 등이 제어하거나 style.display로 제어 */
+}
+#custom-alert-overlay.hidden {
+    display: none !important;
+}
 
+.custom-alert-box {
+    position: relative;
+    background-color: #EDEDED;
+    border-radius: 20px;
+    min-height: 150px;
+    width: auto; /* 콘텐츠에 맞게 유동성 */
+    min-width: 300px; /* 최소 너비 */
+    padding: 13px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    overflow: hidden; /* 상단 바 클립 */
+}
+
+.alert-top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #C92A00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-top-bar span {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700; /* Bold */
+    font-size: 20px;
+    color: #F8F8F8;
+}
+
+.alert-content {
+    margin-top: 20px; /* 상단바 높이만큼 확보 */
+    padding-top: 20px; /* 텍스트 간격 */
+    text-align: center;
+}
+
+#alert-message {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500; /* Medium */
+    font-size: 20px;
+    color: #212121;
+    white-space: pre-wrap; /* 줄바꿈 지원 */
+}
+
+.alert-footer {
+    margin-top: 15px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500; /* Medium */
+    font-size: 15px;
+    color: #B4B4B4;
+    text-align: center;
+}

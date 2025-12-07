@@ -32,8 +32,7 @@ function setupSecretReveal() {
   const cursor = document.getElementById("cursor-circle");
   if (!secret || !cursor) return;
 
-  const radius = 130;
-  const blur = 20; // ▶ 여기서 원 크기 조절
+  const radius = 130; // ▶ 여기서 원 크기 조절
 
   // 패널 위치
   let rect = secret.getBoundingClientRect();
@@ -76,3 +75,27 @@ function setupSecretReveal() {
     secret.style.clipPath = `circle(${radius}px at ${localX}px ${localY}px)`;
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    setupNeonMarquee();
+
+    // [NEW] 알림 팝업 로직 연결
+    const links = document.querySelectorAll('.menu-link');
+    const alertOverlay = document.getElementById('custom-alert-overlay');
+    const alertMsg = document.getElementById('alert-message');
+
+    // 링크 클릭 시 팝업 열기
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const msg = link.getAttribute('data-msg') || "알림 내용이 없습니다.";
+            alertMsg.textContent = msg;
+            alertOverlay.classList.remove('hidden');
+        });
+    });
+
+    // 오버레이 클릭 시 팝업 닫기
+    alertOverlay.addEventListener('click', () => {
+        alertOverlay.classList.add('hidden');
+    });
+});

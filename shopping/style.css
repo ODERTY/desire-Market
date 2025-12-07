@@ -18,9 +18,10 @@ body.main-page { margin: 0; font-family: 'Pretendard', sans-serif; background-co
 .top-banner-inner { position: relative; height: 100%; width: 100%; }
 .top-banner-logo { position: absolute; left: 12%; top: 50%; transform: translateY(-50%); font-family: 'Galmuri11', sans-serif; font-size: 45px; font-weight: 700; white-space: nowrap; }
 .top-banner-nav { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; gap: 40px; }
-.top-banner-about { position: absolute; right: -80%; top: 38%; transform: translate(-50%, -50%); }
+.top-banner-about { position: absolute; right: -80%; top: 33.5%; transform: translate(-50%, -50%); }
 .top-banner-nav a, .top-banner-about { font-family: 'GMarketSans', sans-serif; font-weight: 500; font-size: 20px; color: #ffffff; text-decoration: none; white-space: nowrap; position: relative; }
-.top-banner-nav a::after, .top-banner-about::after { content: ""; position: absolute; left: 0; bottom: -27px; width: 100%; height: 5px; background-color: #FFFFFF; opacity: 0; transform: translateY(-10px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.top-banner-nav a::after { content: ""; position: absolute; left: 0; bottom: -27px; width: 100%; height: 5px; background-color: #FFFFFF; opacity: 0; transform: translateY(-10px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.top-banner-about::after { content: ""; position: absolute; left: 0; bottom: -31px; width: 100%; height: 5px; background-color: #FFFFFF; opacity: 0; transform: translateY(-10px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 .top-banner-nav a:hover::after, .top-banner-about:hover::after { opacity: 1; transform: translateY(0); }
 @media (max-width: 1400px) { .top-banner-logo { left: 5%; font-size: 32px; } .top-banner-nav { gap: 20px; } .top-banner-nav a { font-size: 16px; } }
 @media (max-width: 768px) { .top-banner-nav { display: none; } .top-banner-logo { left: 50%; transform: translate(-50%, -50%); } .top-banner-about { display: none; } }
@@ -156,7 +157,7 @@ body.main-page { margin: 0; font-family: 'Pretendard', sans-serif; background-co
 .sum-val-basic { font-family: 'Pretendard', sans-serif; font-weight: 500; font-size: 16px; color: #474747; }
 .sum-label-big { font-family: 'Pretendard', sans-serif; font-weight: 600; font-size: 28px; color: #474747; }
 .sum-val-big { font-family: 'Pretendard', sans-serif; font-weight: 700; font-size: 28px; color: #D23737; }
-.final-pay-row { display: flex; justify-content: flex-end; align-items: center; margin-top: 21px; gap: 20px; padding-right: 170px; }
+.final-pay-row { display: flex; justify-content: flex-end; align-items: center; margin-top: 21px; gap: 20px; }
 .final-pay-label { font-family: 'Pretendard', sans-serif; font-weight: 400; font-size: 16px; color: #474747; }
 .final-pay-value { font-family: 'Pretendard', sans-serif; font-weight: 700; font-size: 24px; color: #0078FF; }
 .btn-cart-pay { width: 400px; height: 50px; background-color: #C60100; border-radius: 30px; display: flex; justify-content: center; align-items: center; font-family: 'Pretendard', sans-serif; font-weight: 700; font-size: 20px; color: #FFFFFF; padding: 10px 79px; cursor: pointer; transition: background-color 0.2s, transform 0.1s; border: none; margin: 70px auto 0 auto; }
@@ -176,7 +177,7 @@ body.glitch-active {
 
 body.glitch-active::before,
 body.glitch-active::after {
-    content: "";
+    content: "오류!오류!";
     position: fixed;
     top: 0;
     left: 0;
@@ -203,16 +204,16 @@ body.glitch-active::after {
 
 @keyframes earthquake {
     0% { transform: translate(2px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    10% { transform: translate(-1px, -2px) rotate(-10deg); }
+    20% { transform: translate(-3px, 0px) rotate(10deg); }
     30% { transform: translate(0px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    40% { transform: translate(1px, -1px) rotate(10deg); }
+    50% { transform: translate(-1px, 2px) rotate(-10deg); }
     60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(2px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    70% { transform: translate(2px, 1px) rotate(-10deg); }
+    80% { transform: translate(-1px, -1px) rotate(10deg); }
     90% { transform: translate(2px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
+    100% { transform: translate(1px, -2px) rotate(-10deg); }
 }
 
 @keyframes strobe-invert {
@@ -247,7 +248,7 @@ body.glitch-active::after {
 #page-report {
     /* [수정] 단축 속성 + !important로 강제 적용 */
     /* 파일명에 공백이 있으므로 반드시 따옴표('')가 필요합니다 */
-    background: url('shopping/온보딩 배경.png') no-repeat center center / cover !important;
+    background: url('결산배경.png') no-repeat center center / cover !important;
     
     background-color: #6e6e6e; /* 이미지 로드 실패 시 대비 */
     
@@ -280,7 +281,7 @@ body.glitch-active::after {
 }
 .r-sub-title {
     font-family: 'Pretendard', sans-serif; font-weight: 500; font-size: 22px; color: #BD1100;
-    text-align: center; margin-bottom: 65px;
+    text-align: center; margin-bottom: 35px;
 }
 
 /* 중반부 - 좌측 정렬 시작 */
@@ -298,25 +299,25 @@ body.glitch-active::after {
 .r-keyword-title {
     width: 100%; text-align: left;
     font-family: 'Pretendard', sans-serif; font-weight: 600; font-size: 22px; color: #C60100;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 /* 키워드 설명 */
 .r-keyword-desc {
     width: 100%; text-align: left;
     font-family: 'Pretendard', sans-serif; font-weight: 500; font-size: 18px; color: #474747;
-    margin-bottom: 22px; line-height: 1.5; word-break: keep-all;
+    margin-bottom: 16px; line-height: 1.5; word-break: keep-all;
 }
 
 /* 구매한 욕망 키워드 */
 .r-buy-keyword-label {
     width: 100%; text-align: left;
     font-family: 'Pretendard', sans-serif; font-weight: 500; font-size: 20px; color: #212121;
-    margin-bottom: 10px;
+    margin-bottom:5px;
 }
 .r-max-keyword {
     width: 100%; text-align: left;
     font-family: 'Galmuri11', sans-serif; font-weight: 700; font-size: 32px; color: #BD1100;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .r-other-keywords {
     width: 100%; text-align: left;
@@ -419,8 +420,8 @@ body.glitch-active::after {
 }
 
 .alert-content {
-    margin-top: 50px; /* 상단바 높이만큼 확보 */
-    padding-top: 39px; /* 텍스트 간격 */
+    margin-top: 35px; /* 상단바 높이만큼 확보 */
+    padding-top: 20px; /* 텍스트 간격 */
     text-align: center;
 }
 
@@ -433,7 +434,7 @@ body.glitch-active::after {
 }
 
 .alert-footer {
-    margin-top: 40px;
+    margin-top: 15px;
     font-family: 'Pretendard', sans-serif;
     font-weight: 500; /* Medium */
     font-size: 15px;

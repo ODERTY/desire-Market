@@ -30,3 +30,27 @@ function setupNeonMarquee() {
   // 준비가 끝나면 애니메이션 시작
   track.classList.add("is-animating");
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    setupNeonMarquee();
+
+    // [NEW] 알림 팝업 로직 연결
+    const links = document.querySelectorAll('.menu-link');
+    const alertOverlay = document.getElementById('custom-alert-overlay');
+    const alertMsg = document.getElementById('alert-message');
+
+    // 링크 클릭 시 팝업 열기
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const msg = link.getAttribute('data-msg') || "알림 내용이 없습니다.";
+            alertMsg.textContent = msg;
+            alertOverlay.classList.remove('hidden');
+        });
+    });
+
+    // 오버레이 클릭 시 팝업 닫기
+    alertOverlay.addEventListener('click', () => {
+        alertOverlay.classList.add('hidden');
+    });
+});
