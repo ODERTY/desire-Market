@@ -1,3 +1,6 @@
+const GEMINI_API_KEY = "AIzaSyBeLv2_JpRMGXRVdTIJuoZ_rvBsSx6MP9U"; 
+
+
 // =========================================
 // [PART 1] 상품 데이터 장부 (CATALOG)
 // =========================================
@@ -903,73 +906,110 @@ const RESULTS = {
     "운명/행운": { title: "기도 메타로 인생 사는 샤머니즘 신봉자", desc: "'이걸 사면 좋은 일이 생길 거야.'라는 근거 없는 믿음으로 결제 버튼을 누르셨군요? 당신에게 쇼핑은 합리적 소비가 아니라, 우주에 보내는 간절한 기도이자 부적 붙이기입니다." }
 };
 
-// [PART 5] 최종 결제 및 글리치 연출
-function handleFinalPayment() {
+// [PART 5 수정] 최종 결제 및 글리치 연출 (로직 분리)
+async function handleFinalPayment() {
     // 1. 강제 스크롤 및 글리치 효과 시작
     window.scrollTo(0, 0);
     document.body.classList.add('glitch-active');
-    
-    // 2. 2.5초 후 분석 및 페이지 전환
-    setTimeout(() => {
-        document.body.classList.remove('glitch-active');
-        
-        // 장바구니 숨김, 결산 표시
-        elPageCart.style.display = 'none'; 
-        const elPageReport = document.getElementById('page-report');
-        elPageReport.classList.remove('hidden');
-        elPageReport.style.display = 'flex';
-        
-        // 분석 실행
-        analyzeAndRenderReport();
-        
-        // [NEW] 결산 페이지 전광판 변경
-        initReportMarquees();
 
-    }, 2500);
+    // 2. AI 분석 요청 (백그라운드에서 실행)
+    //    분석을 위해 키워드를 먼저 계산합니다.
+    const counts = {};
+    state.cart.forEach(item => {
+        const keys = Array.isArray(item.keyword) ? item.keyword : [item.keyword];
+        keys.forEach(k => { counts[k] = (counts[k] || 0) + 1; });
+    });
+    const sortedKeywords = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+    const dominantKeyword = sortedKeywords.length > 0 ? sortedKeywords[0][0] : "탐욕";
+    
+    // API 호출 시작 (비동기)
+    const apiPromise = fetchAIAnalysis(dominantKeyword, state.cart);
+
+    // 3. 글리치 시간 (2.5초 고정) 대기
+    await wait(2500);
+
+    // 4. 글리치 종료 및 페이지 전환
+    document.body.classList.remove('glitch-active');
+    
+    elPageCart.style.display = 'none'; 
+    const elPageReport = document.getElementById('page-report');
+    elPageReport.classList.remove('hidden');
+    elPageReport.style.display = 'flex';
+    
+    // 로딩 상태 표시
+    const reportCard = document.getElementById('report-card');
+    reportCard.innerHTML = `
+        <div style="padding: 100px 0; text-align: center;">
+            <div style="font-family: 'GMarketSans'; font-size: 24px; color: #BD1100; margin-bottom: 20px;">SYSTEM ANALYZING...</div>
+            <div style="font-family: 'Pretendard'; font-size: 16px; color: #555;">당신의 무의식을 해독하고 있습니다.</div>
+        </div>
+    `;
+    
+    // 전광판은 '분석중' 상태로 변경
+    initReportMarquees(); 
+
+    // 5. AI 분석 완료 대기
+    const aiResult = await apiPromise;
+
+    // 6. 결과 렌더링 및 등장 효과
+    //    카드에 페이드인 애니메이션 적용을 위해 클래스 추가 또는 스타일 조정
+    reportCard.style.opacity = '0';
+    analyzeAndRenderReport(aiResult);
+    
+    // 약간의 딜레이 후 페이드인
+    requestAnimationFrame(() => {
+        reportCard.style.transition = 'opacity 1.5s ease-out';
+        reportCard.style.opacity = '1';
+    });
 }
 
-// [NEW] 결산 페이지 전광판 변경 함수
 function initReportMarquees() {
-    const warningText = `<span class="neon-item" style="color:#E7FF7E; text-shadow: 0 0 10px #e7ff7eff;">오류! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 욕망 주의! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>`;
+    const warningText = `<span class="neon-item" style="color:#E7FF7E; text-shadow: 0 0 4px #e7ff7eff;">오류! &nbsp;&nbsp;&nbsp; 욕망 주의! &nbsp;&nbsp;&nbsp;</span>`;
     if (elTopMarqueeTrack) elTopMarqueeTrack.innerHTML = warningText.repeat(20);
     if (elBottomMarqueeTrack) elBottomMarqueeTrack.innerHTML = warningText.repeat(20);
 }
 
-// [NEW] 모의 AI 분석 텍스트 생성기
+// [NEW] Gemini API 호출 함수
+async function fetchAIAnalysis(keyword, cartItems) {
+    if (GEMINI_API_KEY === "" || !GEMINI_API_KEY) {
+        // API 키가 없으면 기존의 정적 텍스트 생성기 사용
+        return generateMockAIAnalysis(keyword, cartItems);
+    }
+
+    const itemNames = cartItems.map(i => i.name).join(', ');
+    const prompt = `
+        당신은 '타임마켓'이라는 미스테리한 상점의 AI 분석가입니다.
+        고객이 구매한 상품 목록: [${itemNames}]
+        시스템이 도출한 핵심 욕망 키워드: [${keyword}]
+
+        위 정보를 바탕으로 이 고객의 '구매 상품'과 '욕망 키워드' 사이의 연결 고리를 찾으십시오. 고객이 왜 이 물건을 통해 해당 욕망을 채우려 했는지 파악하십시오.내면에 숨겨진 불안, 허영, 또는 결핍을 꿰뚫어 보는 날카롭고 냉소적인 심리 분석 보고서를 작성하세요.
+        말투는 건조하고 분석적이어야 하며, 존댓말을 쓰되 감정을 배제하세요.
+        길이는 공백포함 260자 이내로 요약, 불필요한내용(예:"공백포함270자입니다")은 배제하고 분석내용만 출력.
+    `;
+
+    try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${GEMINI_API_KEY}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+        });
+        const data = await response.json();
+        return data.candidates[0].content.parts[0].text;
+    } catch (error) {
+        console.error("AI Analysis Error:", error);
+        // 에러 시 백업 텍스트 반환
+        return generateMockAIAnalysis(keyword, cartItems);
+    }
+}
+
 function generateMockAIAnalysis(keyword, items) {
     const itemNames = items.map(i => i.name).join(', ');
     return `${keyword}에 대한 강한 집착이 소비 패턴에서 드러납니다. 특히 '${items[0].name}'과 같은 상품을 선택한 것은 무의식적으로 결핍을 메우려는 시도입니다. 당신의 장바구니는 단순한 물건의 집합이 아니라, 채워지지 않는 ${keyword}의 증거들입니다. 이 소비가 과연 당신을 구원할 수 있을까요?`;
 }
 
-// [수정됨] 텍스트 스크램블 함수 (안전성 강화)
-function playTextScramble(element, targetText) {
-    if (!element || !targetText) return; // 요소나 텍스트가 없으면 중단
-
-    const chars = '--==-=-=-=-=-=-=-=-=-=--=';
-    let iterations = 0;
-    
-    // 원래 텍스트가 너무 길 경우 성능을 위해 간격 조정 가능
-    const interval = setInterval(() => {
-        element.innerText = targetText
-            .split('')
-            .map((letter, index) => {
-                if (letter === ' ' || letter === '\n') return letter; // 공백과 줄바꿈은 유지
-                if (index < iterations) return targetText[index];
-                return chars[Math.floor(Math.random() * chars.length)];
-            })
-            .join('');
-        
-        if (iterations >= targetText.length) clearInterval(interval);
-        iterations += 3 / 5; // 속도 조절 (값이 클수록 빠름)
-    }, 30);
-}
-
-// [수정됨] 결산 렌더링 및 전체 스크램블 적용
-function analyzeAndRenderReport() {
+// [수정됨] 결산 렌더링 함수 (aiText 인자 추가)
+function analyzeAndRenderReport(aiText) {
     const reportCard = document.getElementById('report-card');
-    
-    // ... (데이터 분석 및 HTML 생성 로직은 기존과 동일) ...
-    // ... (날짜, 카운팅, 최빈 키워드, AI 분석 텍스트 생성 등) ...
     
     const now = new Date();
     const dateStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}, ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
@@ -994,23 +1034,21 @@ function analyzeAndRenderReport() {
     const otherKeywordsHTML = otherKeywords.map(k => `<span>#${k}</span>`).join('');
 
     const resultData = RESULTS[dominantKeyword] || RESULTS["탐욕"];
-    const aiAnalysisText = generateMockAIAnalysis(dominantKeyword, state.cart);
+    
+    // aiText가 없으면(호출 시점 문제 등) 백업 사용
+    const finalAiText = aiText || generateMockAIAnalysis(dominantKeyword, state.cart);
 
     const productListHTML = state.cart.map(item => {
         const key = Array.isArray(item.keyword) ? item.keyword[0] : item.keyword;
-        // class 추가: 개별 아이템도 스크램블 타겟팅을 위해
         return `<div class="r-product-item scramble-target">${item.name} #${key}</div>`;
     }).join('');
 
-    // HTML 조립 (scramble-target 클래스 추가)
-    // 텍스트가 들어가는 주요 요소들에 'scramble-target' 클래스를 붙이거나, 
-    // 아래에서 querySelectorAll로 선택할 수 있는 클래스를 사용합니다.
     reportCard.innerHTML = `
         <div class="r-time scramble-target">${dateStr}</div>
-        <div class="r-main-title scramble-target">내면의 욕망은 계산될 수 없습니다.</div>
-        <div class="r-sub-title scramble-target">당신이 선택한 것은 상품이 아니라, 내면에 감추고 있던 솔직한 욕망들입니다.</div>
+        <div class="r-main-title scramble-target">내면의 욕망은<br>계산될 수 없습니다.</div>
+        <div class="r-sub-title scramble-target">당신이 선택한 것은 상품이 아니라,<br>내면에 감추고 있던 솔직한 욕망들입니다.</div>
         
-        <div class="r-user-header scramble-target" style="margin-top: 50px;">${userName} 님의 내면 분석</div>
+        <div class="r-user-header scramble-target" style="margin-top: 45px;">${userName} 님의 내면 분석</div>
         
         <div class="r-dash-line"></div>
         
@@ -1025,8 +1063,8 @@ function analyzeAndRenderReport() {
         
         <div class="r-dash-line"></div>
         
-        <div class="r-ai-title scramble-target">${userName} 님의 숨겨진 욕망을 분석했어요.</div>
-        <div class="r-ai-body scramble-target">${aiAnalysisText}</div>
+        <div class="r-ai-title scramble-target">${userName} 님의 숨겨진 심리분석 보고서 </div>
+        <div class="r-ai-body scramble-target">${finalAiText}</div>
         
         <div class="r-dash-line"></div>
         
@@ -1042,22 +1080,17 @@ function analyzeAndRenderReport() {
             <button class="r-btn btn-retry" onclick="location.reload()">다시하기</button>
         </div>
     `;
-    
-    const titleEl = reportCard.querySelector('.r-keyword-title');
-    const descEl = reportCard.querySelector('.r-keyword-desc');
-    const aiEl = reportCard.querySelector('.r-ai-body');
-    
-    playTextScramble(titleEl, resultData.title);
-    setTimeout(() => playTextScramble(descEl, resultData.desc), 500);
-    setTimeout(() => playTextScramble(aiEl, aiAnalysisText), 1000);
 
     // [NEW] 이미지 저장 버튼 이벤트 연결 (버튼 생성 후 연결해야 함)
     document.getElementById('btn-save-image').addEventListener('click', saveReportImage);
     
-    // 전체 스크램블 효과 적용
     const targets = reportCard.querySelectorAll('.scramble-target');
+    
     targets.forEach((el, index) => {
-        setTimeout(() => { playTextScramble(el, el.innerText); }, index * 100);
+        // 순차적으로 타다닥 실행 (0.1초 간격)
+        setTimeout(() => { 
+            playTextScramble(el, el.innerText); 
+        }, index * 100);
     });
 }
 
@@ -1065,6 +1098,17 @@ function playTextScramble(element, targetText) {
     if (!element || !targetText) return;
     const chars = '!@#$%^&*()_+~`|}{[]:;?><,./-=';
     let iterations = 0;
+    
+    // [설정] 목표 시간: 1.8초 (1800ms)
+    // 텍스트가 길수록 한 번에 많이 변하게(increment 증가) 하여 시간을 맞춤
+    const duration = 1800; 
+    const intervalTime = 30; // 30ms마다 갱신
+    const totalFrames = duration / intervalTime; // 총 프레임 수 (60회)
+    
+    // 진행 속도 계산: (텍스트 길이 / 총 프레임)
+    // 단, 텍스트가 너무 짧아서 1보다 작아지면(너무 느려지면) 최소 1글자씩은 변하게 설정 (Math.max)
+    const increment = Math.max(1, targetText.length / totalFrames);
+
     const interval = setInterval(() => {
         element.innerText = targetText
             .split('')
@@ -1074,9 +1118,14 @@ function playTextScramble(element, targetText) {
                 return chars[Math.floor(Math.random() * chars.length)];
             })
             .join('');
-        if (iterations >= targetText.length) clearInterval(interval);
-        iterations += 1 / 2;
-    }, 30);
+        
+        if (iterations >= targetText.length) {
+            clearInterval(interval);
+            element.innerText = targetText; // 최종 텍스트 확정
+        }
+        
+        iterations += increment; // 동적 속도로 증가
+    }, intervalTime);
 }
 
 // [수정됨] 이미지 저장 함수 (html2canvas)
