@@ -12,9 +12,9 @@ const CATALOG = [
         originalPrice: 35999,
         reviewCount: 342,
         rating: 4.9,
-        reviewer: "김*수",
-        reviewDate: "2023년 11월 10일",
-        reviewText: "지난 5년간 몸이 너무 아프고 죽는구나 싶었는데 뱀기름 덕에 살아난거 같아요 몸이 건강해지는 느낌? 젊어지는 것 같아요.",
+        reviewer: "신*혜",
+        reviewDate: "2023년 12월 5일",
+        reviewText: "냄새가 강하지 않고 은은한 허브향이 나서 거부감이 없어요. 피부가 정말 튼튼해지는 느낌!",
         keyword: "영원"
     },
     {
@@ -27,9 +27,9 @@ const CATALOG = [
         originalPrice: 49999,
         reviewCount: 1820,
         rating: 4.8,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "이거 차고 난 뒤로 기립성 저혈압이 사라졌어요 차크라가 뚫리는 느낌임 ㄹㅇ",
+        reviewer: "정*은",
+        reviewDate: "2023년 07월 01일",
+        reviewText: "부모님 선물로 드렸는데 너무 좋아하세요. 주변 분들에게 효과가 좋다며 자랑하십니다.",
         keyword: "영원"
     },
     {
@@ -42,9 +42,9 @@ const CATALOG = [
         originalPrice: 71000,
         reviewCount: 2752,
         rating: 4.7,
-        reviewer: "김*민",
-        reviewDate: "2024년 4월 02일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "박*수",
+        reviewDate: "2024년 11월 03일",
+        reviewText: "'생명 연장기' 이름 보고 좀 웃었는데, 이거 찐임. 매일 살균하니 감기 걸릴 일 없을 것 같아요!",
         keyword: "안전"
     },
     {
@@ -57,9 +57,9 @@ const CATALOG = [
         originalPrice: 31200,
         reviewCount: 759,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "이*은",
+        reviewDate: "2025년 01월 12일",
+        reviewText: "겨울철 심한 각질 때문에 고생했는데, 밤에 듬뿍 바르고 자니 다음날 아기가 된 듯 부드러워졌어요.",
         keyword: "순수"
     },
     {
@@ -72,9 +72,9 @@ const CATALOG = [
         originalPrice: 38700,
         reviewCount: 523,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "도*준",
+        reviewDate: "2025년 01월 07일",
+        reviewText: "오존 치료는 무서웠는데, 이건 개편함. 만성 비염 때문에 샀는데, 콧물이 싹 마르는 기분!",
         keyword: "안전"
     },
     {
@@ -87,9 +87,9 @@ const CATALOG = [
         originalPrice: 28999,
         reviewCount: 4899,
         rating: 4.8,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "김*자",
+        reviewDate: "2024년 11월 21일",
+        reviewText: "마신 지 며칠 안 됐는데 몸이 가벼워지는 느낌! 활력이 생겨서 아침에 일어나는 게 힘들지 않아요.",
         keyword: "정화"
     },
     {
@@ -102,9 +102,9 @@ const CATALOG = [
         originalPrice: 22000,
         reviewCount: 666,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "김*하",
+        reviewDate: "2024년 10월 05일",
+        reviewText: "레알 신기함. 이 날 기분 안 좋겠다고 뜨면 진짜 안 좋음! 인생 계획표로 사용 중입니다.",
         keyword: "영원"
     },
     {
@@ -117,9 +117,9 @@ const CATALOG = [
         originalPrice: 27999,
         reviewCount: 2424,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "곽*호",
+        reviewDate: "2022년 12월 19일",
+        reviewText: "개예쁨. 그냥 액세서리로도 개만족. 전자파 걱정하는 엄마 폰에도 붙여드렸더니 개좋아하심.",
         keyword: "영원"
     },
     {
@@ -132,9 +132,9 @@ const CATALOG = [
         originalPrice: 70000,
         reviewCount: 846,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "박*민",
+        reviewDate: "2025년 01월 29일",
+        reviewText: "맛이 상큼해서 마시기 편했고, 3일 만에 숙변 제거 효과 제대로 봤습니다. 배가 편안해요.",
         keyword: "영원"
     },
     {
@@ -147,9 +147,9 @@ const CATALOG = [
         originalPrice: 55000,
         reviewCount: 385,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "제*이",
+        reviewDate: "2024년 04월 07일",
+        reviewText: "알루미늄 간지 덕분에 멋져요. 전자파 차단하니깐 속이 더 좋아졌어요!! 확실히 좋네요.",
         keyword: "영원"
     },
     {
@@ -162,9 +162,9 @@ const CATALOG = [
         originalPrice: 65000,
         reviewCount: 298,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "김*하",
+        reviewDate: "2024년 02월 25일",
+        reviewText: "레알 중요한 계약 때 지갑에 넣었는데 대박 터짐! 부적빨 미쳤음! 이거 찐이다.",
         keyword: "운명/행운"
     },
     {
@@ -177,9 +177,9 @@ const CATALOG = [
         originalPrice: 28000,
         reviewCount: 417,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "윤*석",
+        reviewDate: "2024년 07월 13일",
+        reviewText: "따뜻함이 은은하게 오래가서 좋습니다. 자기 전에 붙이고 자면 숙면을 취하는 데 도움이 되는 것 같아요.",
         keyword: "정화"
     },
     {
@@ -192,9 +192,9 @@ const CATALOG = [
         originalPrice: 65000,
         reviewCount: 886,
         rating: 4.8,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "김*철",
+        reviewDate: "2024년 11월 15일",
+        reviewText: "물맛이 확실히 달라졌어요. 부드럽고 깔끔해서 평소보다 물을 훨씬 많이 마시게 됩니다. 활력이 생기는 기분!",
         keyword: "정화"
     },
     {
@@ -207,9 +207,9 @@ const CATALOG = [
         originalPrice: 19990,
         reviewCount: 1241,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "강*우",
+        reviewDate: "2024년 06월 30일",
+        reviewText: "여행이나 출장 갈 때 필수품입니다. 낯선 곳에서도 익숙한 아로마 향 덕분에 쉽게 잠들 수 있어요.",
         keyword: "정화"
     },
     {
@@ -222,9 +222,9 @@ const CATALOG = [
         originalPrice: 42300,
         reviewCount: 652,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "이*윤",
+        reviewDate: "2025년 01월 07일",
+        reviewText: "디자인 개예쁨. 액세서리 기능도 하는데 차크라 밸런스까지 잡아주니 개좋네.",
         keyword: "통제"
     },
     {
@@ -237,9 +237,9 @@ const CATALOG = [
         originalPrice: 32000,
         reviewCount: 410,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "신*준",
+        reviewDate: "2023년 10월 30일",
+        reviewText: "작은 화분에 담겨 와서 자리 차지도 안 하고 좋습니다. 실용성과 인테리어 모두 잡았어요.",
         keyword: "안전"
     },
     {
@@ -252,9 +252,9 @@ const CATALOG = [
         originalPrice: 48000,
         reviewCount: 2105,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "마*준",
+        reviewDate: "2023년 12월 15일",
+        reviewText: "레알 냄새도 잡아줌. 찝찝한 캠핑 장비 소독할 때 개편함.",
         keyword: "안전"
     },
     {
@@ -267,9 +267,9 @@ const CATALOG = [
         originalPrice: 45000,
         reviewCount: 945,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "이*정",
+        reviewDate: "2023년 10월 08일",
+        reviewText: "구성이 알차서 주방부터 욕실까지 모두 바꿨습니다. 화학 성분 냄새가 없어서 집안 공기가 맑아진 느낌이에요.",
         keyword: "순수"
     },
     {
@@ -282,9 +282,9 @@ const CATALOG = [
         originalPrice: 28000,
         reviewCount: 759,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "한*비",
+        reviewDate: "2024년 09월 11일",
+        reviewText: "피부 자극 없이 순해서 마음에 들어요. 떼어낼 때도 깔끔하게 떨어져서 붉어짐이 없습니다.",
         keyword: "정화"
     },
     {
@@ -297,9 +297,9 @@ const CATALOG = [
         originalPrice: 22000,
         reviewCount: 1456,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "고*수",
+        reviewDate: "2025년 03월 15일",
+        reviewText: "불면증 종결. 5분 듣고 개꿀잠 잤습니다. 레알 수면제 대신 이거 찐이다.",
         keyword: "운명/행운"
     },
     {
@@ -312,9 +312,9 @@ const CATALOG = [
         originalPrice: 55000,
         reviewCount: 1441,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "김*철",
+        reviewDate: "2024년 12월 01일",
+        reviewText: "물맛이 확실히 부드럽고 좋아요. 알칼리수를 마신 후 속 쓰림이 줄어들어서 매일 챙겨 마시고 있습니다.",
         keyword: "정화"
     },
     {
@@ -327,9 +327,9 @@ const CATALOG = [
         originalPrice: 65000,
         reviewCount: 3102,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "송*진",
+        reviewDate: "2022년 06월 18일",
+        reviewText: "흡수력이 정말 좋아요. 바르자마자 피부 속까지 쫀쫀하게 채워지는 느낌이라 안티에이징 효과 기대하고 있습니다!",
         keyword: "영원"
     },
     {
@@ -342,9 +342,9 @@ const CATALOG = [
         originalPrice: 68000,
         reviewCount: 2674,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "김*하",
+        reviewDate: "2024년 03월 17일",
+        reviewText: "케이스 하나 바꿨을 뿐인데 폰에서 나오는 열감이 레알 사라짐. 통화할 때 귀가 덜 뜨거워서 개좋음!",
         keyword: "안전"
     },
     {
@@ -357,9 +357,9 @@ const CATALOG = [
         originalPrice: 69900,
         reviewCount: 3548,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "김*주",
+        reviewDate: "2022년 04월 28일",
+        reviewText: "미백 크림 유목민이었는데 정착했어요! 바르자마자 피부 톤이 한 톤 밝아지는 즉각적인 효과가 놀라워요.",
         keyword: "순수"
     },
     {
@@ -372,9 +372,9 @@ const CATALOG = [
         originalPrice: 39900,
         reviewCount: 4236,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "강*우",
+        reviewDate: "2025년 07월 05일",
+        reviewText: "여행이나 출장 갈 때 필수품입니다. 낯선 곳에서도 익숙한 아로마 향 덕분에 쉽게 잠들 수 있어요.",
         keyword: "정화"
     },
     {
@@ -387,9 +387,9 @@ const CATALOG = [
         originalPrice: 55000,
         reviewCount: 1864,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "신*비",
+        reviewDate: "2024년 09월 17일",
+        reviewText: "개꿀! 비싼 영양제보다 이게 찐! 파워 에너지를 얻고 싶다면 지르세요.",
         keyword: "운명/행운"
     },
     {
@@ -402,8 +402,8 @@ const CATALOG = [
         originalPrice: 48000,
         reviewCount: 2389,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
+        reviewer: "이*든",
+        reviewDate: "2024년 09월 03일",
         reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
         keyword: "통제"
     },
@@ -417,9 +417,9 @@ const CATALOG = [
         originalPrice: 70000,
         reviewCount: 986,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "최*정",
+        reviewDate: "2024년 05월 05일",
+        reviewText: "개귀여움! 크기가 작은데 성능은 대박입니다. 차량용으로 하나 더 살까 고민 중.",
         keyword: "안전"
     },
     {
@@ -432,9 +432,9 @@ const CATALOG = [
         originalPrice: 68000,
         reviewCount: 1468,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "김*슬",
+        reviewDate: "2024년 11월 20일",
+        reviewText: "매달 설레는 마음으로 박스를 열어요! 비건 제품 찾기 힘들었는데, 다양한 신제품을 써볼 수 있어 정말 만족합니다.",
         keyword: "순수"
     },
     {
@@ -447,9 +447,9 @@ const CATALOG = [
         originalPrice: 79900,
         reviewCount: 577,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "김*성",
+        reviewDate: "2023년 11월 30일",
+        reviewText: "휴대하기 간편해서 사무실에서 매일 사용 중입니다. 물을 자주 마시는 습관이 생겨서 건강해지는 기분이에요.",
         keyword: "정화"
     },
     {
@@ -462,9 +462,9 @@ const CATALOG = [
         originalPrice: 69900,
         reviewCount: 2489,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "이*진",
+        reviewDate: "2025년 01월 21일",
+        reviewText: "가성비 대박. 비싼 심리치료 대신 이거 하나면 끝! 저 같은 ADHD인 개강추!",
         keyword: "통제"
     },
     {
@@ -477,9 +477,9 @@ const CATALOG = [
         originalPrice: 68000,
         reviewCount: 3245,
         rating: 4.9,
-        reviewer: "이*희",
-        reviewDate: "2023년 12월 05일",
-        reviewText: "남편이 못 알아봐요. 시술보다 훨씬 낫네요. 재구매 의사 10000%입니다.",
+        reviewer: "조*웅",
+        reviewDate: "2025년 03월 17일",
+        reviewText: "원석 하나하나 기운이 다름. 손에 쥐고 명상하면 개안정됩니다. 싱잉볼 소리도 너무 좋아요!!",
         keyword: "운명/행운"
     }
 ];

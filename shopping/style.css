@@ -147,7 +147,7 @@ body.main-page { margin: 0; font-family: 'Pretendard', sans-serif; background-co
 .cart-label-col { display: flex; flex-direction: column; align-items: flex-end; margin-right: 20px; gap: 17px; }
 .cart-label-text { font-family: 'Pretendard', sans-serif; font-weight: 500; font-size: 16px; color: #2B2B2B; white-space: nowrap; }
 .cart-value-col { display: flex; flex-direction: column; align-items: flex-end; gap: 17px; }
-.cart-value-text { font-family: 'Pretendard', sans-serif; font-weight: 500; font-size: 16px; color: #2B2B2B; white-space: nowrap; }
+.cart-value-text { font-family: 'Pretendard', sans-serif; font-weight: 500; font-size: 16px; color: #cf0707; white-space: nowrap; }
 .cart-final-price { font-family: 'Pretendard', sans-serif; font-weight: 700; font-size: 16px; color: #1D7AE4; white-space: nowrap; }
 .cart-summary { width: 100%; margin-top: 47px; }
 .summary-row { display: flex; justify-content: flex-end; align-items: flex-start; margin-top: 21px; gap: 21px; }
